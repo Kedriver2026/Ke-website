@@ -6,7 +6,7 @@ const form=document.getElementById('kateForm');
 const input=document.getElementById('kateInput');
 
 // Public URL for the secure Supabase Edge Function. D.A.R.T. credentials remain server-side.
-const DART_STATUS_API='https://yvppsjgyedqcvfbhrhrm.supabase.co/functions/v1/dart-bdo-lookup';
+const DART_STATUS_API='https://yvppsjgyedqcvfbhrhrm.supabase.co/functions/v1/dart-status';
 
 let kateFlow=null;
 
