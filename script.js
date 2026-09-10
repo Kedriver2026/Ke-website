@@ -5,9 +5,8 @@ const body=document.getElementById('kateBody');
 const form=document.getElementById('kateForm');
 const input=document.getElementById('kateInput');
 
-// Secure live lookup endpoint. Leave blank until the K&E server-side D.A.R.T. connector is deployed.
-// Never place D.A.R.T. usernames or passwords in this public website file.
-const DART_STATUS_API='';
+// Public URL for the secure Supabase Edge Function. D.A.R.T. credentials remain server-side.
+const DART_STATUS_API='https://yvppsjgyedqcvfbhrhrm.supabase.co/functions/v1/dart-bdo-lookup';
 
 let kateFlow=null;
 
@@ -51,22 +50,18 @@ function resetFlow(){
 }
 
 function friendlyStatus(data){
-  const status=(data.status||'').toLowerCase();
+  const raw=(data.status||'').trim();
+  const status=raw.toLowerCase();
   const when=data.lastUpdate?` The latest update was ${data.lastUpdate}.`:'';
-  if(status==='delivered')return `Good news! Your K&E delivery has been marked Delivered.${data.deliveredAt?` It was completed ${data.deliveredAt}.`:when}`;
-  if(status==='attempted')return `A delivery attempt was recorded.${data.attemptedAt?` The attempt was ${data.attemptedAt}.`:when}${data.customerMessage?` ${data.customerMessage}`:''}`;
-  if(status==='out for delivery'||status==='out_for_delivery')return `Your K&E delivery is currently Out for Delivery.${when}`;
-  if(status==='assigned')return `Your delivery has been assigned and is being prepared for delivery.${when}`;
-  if(status==='picked up'||status==='picked_up')return `Your baggage has been picked up by K&E and is moving through the delivery process.${when}`;
-  return `I found your delivery.${data.status?` Its current status is ${data.status}.`:''}${when}`;
+  if(status.includes('delivered'))return `Good news! Your K&E delivery has been marked Delivered.${data.deliveredAt?` It was completed ${data.deliveredAt}.`:when}`;
+  if(status.includes('attempt'))return `A delivery attempt was recorded.${when}`;
+  if(status.includes('out for delivery'))return `Your K&E delivery is currently Out for Delivery.${when}`;
+  if(status.includes('assigned to driver')||status==='assigned')return `Your delivery has been assigned to a driver and is being prepared for delivery.${when}`;
+  if(status.includes('picked up')||status.includes('pickup'))return `Your baggage has been picked up and is moving through the delivery process.${when}`;
+  return `I found your delivery.${raw?` Its current status is ${raw}.`:''}${when}`;
 }
 
 async function lookupDelivery(orderNumber,lastName,mode){
-  if(!DART_STATUS_API){
-    addMessage('Thank you. Your verification details are ready, but live D.A.R.T. lookup is not connected to the secure K&E server yet. I won’t guess your status.');
-    resetFlow();
-    return;
-  }
   addMessage('One moment while I securely check your K&E delivery…');
   try{
     const response=await fetch(DART_STATUS_API,{
