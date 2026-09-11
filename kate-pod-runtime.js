@@ -12,39 +12,25 @@ function addKateImage(src,alt='K&E proof of delivery photo'){
   body.appendChild(wrap);
   body.scrollTop=body.scrollHeight;
 }
-
-function isPodQuestion(text){
-  const q=text.toLowerCase();
-  return /(photo|picture|image|proof of delivery|pod|where.*left|where.*leave)/.test(q);
-}
-
+function isPodQuestion(text){const q=text.toLowerCase();return /(photo|picture|image|proof of delivery|pod|where.*left|where.*leave)/.test(q)}
 async function showPodPhoto(){
-  if(!kateFlow?.orderNumber||!kateFlow?.lastName){
-    addMessage('I need to verify the delivery first before I can show any delivery photo.');
-    return true;
-  }
-  addMessage(pick([`Yes—let me check the D.A.R.T. delivery images for you. 📸`,`Let me pull up the proof-of-delivery image from D.A.R.T. 📸` ]));
+  if(!kateFlow?.orderNumber||!kateFlow?.lastName){addMessage('I need to verify the delivery first before I can show any delivery photos.');return true}
+  addMessage(pick([`Yes—let me check the D.A.R.T. delivery photos for you. 📸`,`Let me pull up the proof-of-delivery photos from D.A.R.T. 📸`]));
   try{
     const r=await fetch(KATE_POD_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderNumber:kateFlow.orderNumber,lastName:kateFlow.lastName})});
     if(r.status===404){addMessage('I couldn’t find that verified delivery in the image lookup.');return true}
     if(r.status===403){addMessage('I couldn’t verify the delivery details for the photo lookup.');return true}
     if(!r.ok)throw new Error('pod_failed');
     const d=await r.json();
-    if(!d.photoAvailable){addMessage('I checked the delivered event in D.A.R.T., but there isn’t a delivery photo available for this order.');return true}
-    if(d.imageTooLarge){addMessage('I found the delivery photo, but it’s too large for me to display here right now. I’ve confirmed that a POD image exists.');return true}
-    if(!d.imageData){addMessage('I found the delivery-photo record, but I couldn’t load the image itself.');return true}
-    addMessage(`I found it. 📸 This is the photo attached to the delivered event${d.photoId?` (photo ${d.photoId})`:''}.`);
-    addKateImage(d.imageData,'D.A.R.T. proof of delivery photo');
-    addMessage('Does this location look familiar?');
+    const photos=Array.isArray(d.photos)?d.photos.filter(p=>p?.available):[];
+    if(!d.photoAvailable||!photos.length){addMessage('I checked D.A.R.T., but there aren’t any delivery photos available for this order.');return true}
+    const displayable=photos.filter(p=>p.imageData);
+    if(!displayable.length){addMessage(`I found ${photos.length===1?'a delivery-photo record':`${photos.length} delivery-photo records`}, but I can’t display ${photos.length===1?'the image':'the images'} here right now.`);return true}
+    addMessage(displayable.length===1?`I found the delivery photo. 📸 Here it is:`:`I found ${displayable.length} photos from the completed delivery. 📸 The photos show the baggage at the drop-off location and the surrounding delivery location.`);
+    displayable.forEach((p,i)=>addKateImage(p.imageData,`D.A.R.T. proof of delivery photo ${i+1}`));
+    addMessage(displayable.length>1?'Do these photos help you recognize where the driver left the baggage?':'Does this location look familiar?');
     return true;
-  }catch(e){
-    addMessage('I’m having trouble opening the D.A.R.T. delivery photo right now. I don’t want to pretend I can see something I can’t, so please try again shortly.');
-    return true;
-  }
+  }catch(e){addMessage('I’m having trouble opening the D.A.R.T. delivery photos right now. I don’t want to pretend I can see something I can’t, so please try again shortly.');return true}
 }
-
 const podBaseHandle=handleFlowInput;
-handleFlowInput=async function(text){
-  if(kateFlow?.lastData&&kateStatusKind(kateFlow.lastData)==='delivered'&&isPodQuestion(text))return await showPodPhoto();
-  return podBaseHandle(text);
-};
+handleFlowInput=async function(text){if(kateFlow?.lastData&&kateStatusKind(kateFlow.lastData)==='delivered'&&isPodQuestion(text))return await showPodPhoto();return podBaseHandle(text)};
