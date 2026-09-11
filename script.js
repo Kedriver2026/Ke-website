@@ -5,9 +5,8 @@ const body=document.getElementById('kateBody');
 const form=document.getElementById('kateForm');
 const input=document.getElementById('kateInput');
 
-// Secure live lookup endpoint. Leave blank until the K&E server-side D.A.R.T. connector is deployed.
-// Never place D.A.R.T. usernames or passwords in this public website file.
-const DART_STATUS_API='';
+// Public KatE gateway. D.A.R.T. credentials stay server-side in Supabase.
+const DART_STATUS_API='https://yvppsjgyedqcvfbhrhrm.supabase.co/functions/v1/kate-dart-status';
 
 let kateFlow=null;
 
@@ -58,15 +57,11 @@ function friendlyStatus(data){
   if(status==='out for delivery'||status==='out_for_delivery')return `Your K&E delivery is currently Out for Delivery.${when}`;
   if(status==='assigned')return `Your delivery has been assigned and is being prepared for delivery.${when}`;
   if(status==='picked up'||status==='picked_up')return `Your baggage has been picked up by K&E and is moving through the delivery process.${when}`;
+  if(status==='unassign driver'||status==='unassigned driver')return `I found your delivery. It is currently awaiting driver assignment.${when}`;
   return `I found your delivery.${data.status?` Its current status is ${data.status}.`:''}${when}`;
 }
 
 async function lookupDelivery(orderNumber,lastName,mode){
-  if(!DART_STATUS_API){
-    addMessage('Thank you. Your verification details are ready, but live D.A.R.T. lookup is not connected to the secure K&E server yet. I won’t guess your status.');
-    resetFlow();
-    return;
-  }
   addMessage('One moment while I securely check your K&E delivery…');
   try{
     const response=await fetch(DART_STATUS_API,{
