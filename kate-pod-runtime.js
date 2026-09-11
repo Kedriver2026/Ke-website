@@ -12,7 +12,18 @@ function addKateImage(src,alt='K&E proof of delivery photo'){
   body.appendChild(wrap);
   body.scrollTop=body.scrollHeight;
 }
-function isPodQuestion(text){const q=text.toLowerCase();return /(photo|picture|image|proof of delivery|pod|where.*left|where.*leave)/.test(q)}
+
+function isPodQuestion(text){
+  const q=String(text||'').toLowerCase().replace(/[’]/g,"'");
+  return /\b(photo|photos|picture|pictures|image|images|pod|proof of delivery)\b/.test(q)
+    || /where\s+(?:did\s+)?(?:they|the driver|you)\s+(?:leave|left|deliver|delivered|drop|dropped)/.test(q)
+    || /where\s+(?:was|were)\s+(?:my\s+)?(?:bag|bags|baggage|luggage)\s+(?:left|delivered|dropped)/.test(q)
+    || /where\s+(?:are|is)\s+(?:my\s+)?(?:bag|bags|baggage|luggage)/.test(q)
+    || /(?:need|want|show me|tell me).*where.*(?:bag|bags|baggage|luggage).*(?:delivered|left|dropped)/.test(q)
+    || /(?:bag|bags|baggage|luggage).*(?:where|location).*(?:delivered|left|dropped)/.test(q)
+    || /delivery\s+location|drop[- ]?off\s+location/.test(q);
+}
+
 async function showPodPhoto(){
   if(!kateFlow?.orderNumber||!kateFlow?.lastName){addMessage('I need to verify the delivery first before I can show any delivery photos.');return true}
   addMessage(pick([`Yes—let me check the D.A.R.T. delivery photos for you. 📸`,`Let me pull up the proof-of-delivery photos from D.A.R.T. 📸`]));
@@ -32,5 +43,9 @@ async function showPodPhoto(){
     return true;
   }catch(e){addMessage('I’m having trouble opening the D.A.R.T. delivery photos right now. I don’t want to pretend I can see something I can’t, so please try again shortly.');return true}
 }
+
 const podBaseHandle=handleFlowInput;
-handleFlowInput=async function(text){if(kateFlow?.lastData&&kateStatusKind(kateFlow.lastData)==='delivered'&&isPodQuestion(text))return await showPodPhoto();return podBaseHandle(text)};
+handleFlowInput=async function(text){
+  if(kateFlow?.lastData&&kateStatusKind(kateFlow.lastData)==='delivered'&&isPodQuestion(text))return await showPodPhoto();
+  return podBaseHandle(text);
+};
