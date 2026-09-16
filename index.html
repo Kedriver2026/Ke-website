@@ -29,6 +29,10 @@
     .connect-home .join-family .actions{justify-content:center}
     .connect-home .contact{text-align:center}
     .connect-home footer{justify-content:center;text-align:center}
+    #verifyOverlay{display:none;position:fixed;inset:0;z-index:9999;background:#041426;color:white;align-items:center;justify-content:center;text-align:center;padding:24px}
+    #verifyOverlay.show{display:flex}
+    #verifyOverlay .box{max-width:560px;background:#0b2139;border:1px solid #173652;border-radius:24px;padding:28px}
+    #verifyOverlay img{width:210px}
     @media(max-width:900px){
       .connect-home .header-logo{width:132px;height:68px}
       .connect-home .hero-logo{width:min(360px,86vw)}
@@ -39,119 +43,21 @@
   </style>
 </head>
 <body class="connect-home">
+<div id="verifyOverlay"><div class="box"><img src="ke-connect-logo-new.png" alt="K&E Connect"><h1>Email verification</h1><p id="verifyMessage">Verifying your email and opening your K&E onboarding…</p></div></div>
 <header class="site-header">
-  <a class="brand" href="#home" aria-label="K&E Connect home">
-    <img class="header-logo" src="ke-connect-logo-new.png" alt="K&E Connect">
-  </a>
-  <nav aria-label="Main navigation">
-    <a href="#about">About</a>
-    <a href="#drivers">Drivers</a>
-    <a href="#technology">Technology</a>
-    <a href="#future">Our Future</a>
-    <a class="nav-cta" href="become-a-driver.html">Join the Family</a>
-  </nav>
+  <a class="brand" href="#home" aria-label="K&E Connect home"><img class="header-logo" src="ke-connect-logo-new.png" alt="K&E Connect"></a>
+  <nav aria-label="Main navigation"><a href="#about">About</a><a href="#drivers">Drivers</a><a href="#technology">Technology</a><a href="#future">Our Future</a><a class="nav-cta" href="become-a-driver.html">Join the Family</a></nav>
 </header>
-
 <main>
-  <section class="hero" id="home">
-    <div class="hero-copy">
-      <img class="hero-logo" src="ke-connect-logo-new.png" alt="K&E Connect">
-      <p class="eyebrow">WELCOME TO K&E CONNECT</p>
-      <h1>More than an app.<br>A connection to the K&E Family.</h1>
-      <p class="lead">K&E Connect is being built for the professional drivers who keep our delivery operation moving. It brings the driver experience together in one place — clearer communication, smoother routes, stronger support and a direct connection to the K&E team.</p>
-      <div class="actions">
-        <a class="button primary" href="become-a-driver.html">Become a K&E Driver</a>
-        <a class="button secondary" href="#about">See What We're Building</a>
-      </div>
-    </div>
-    <div class="hero-card family-card">
-      <span class="status-dot"></span>
-      <p class="card-label">BUILT FOR THE ROAD AHEAD</p>
-      <h2>One driver. One route. One connected experience.</h2>
-      <div class="metric"><strong>Route Support</strong><span>Stay connected from acceptance to completion</span></div>
-      <div class="metric"><strong>Driver Tools</strong><span>The right information when you need it</span></div>
-      <div class="metric"><strong>K&E Family</strong><span>Real support behind the technology</span></div>
-    </div>
-  </section>
-
-  <section class="section identity-band" id="about">
-    <img src="ke-connect-logo-new.png" alt="K&E Connect official logo">
-    <p class="eyebrow">THE DRIVER SIDE OF K&E</p>
-    <h2>Built around drivers. Connected to the operation.</h2>
-    <p>K&E Connect is the home for our driver experience. The goal is simple: give drivers a clear, professional place to understand the work, accept routes, stay connected with dispatch, get the right help in the field and grow with K&E as we expand.</p>
-  </section>
-
-  <section class="section driver-story" id="drivers">
-    <p class="eyebrow">WHY K&E CONNECT</p>
-    <h2>We want drivers to feel supported — not just assigned.</h2>
-    <div class="grid three">
-      <article>
-        <span class="feature-number">01</span>
-        <h3>Clear From the Start</h3>
-        <p>Know what the route is, where you're going and what is expected before you head out. Less confusion. Better communication.</p>
-      </article>
-      <article>
-        <span class="feature-number">02</span>
-        <h3>Support in the Field</h3>
-        <p>K&E Connect is designed to keep the important information close while you're working — airport instructions, route guidance, delivery help and direct support.</p>
-      </article>
-      <article>
-        <span class="feature-number">03</span>
-        <h3>Grow With the Family</h3>
-        <p>As K&E grows into new markets, we want strong drivers growing with us. K&E Connect is part of building that long-term driver relationship.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section split" id="technology">
-    <div>
-      <p class="eyebrow">TECHNOLOGY WITH A HUMAN SIDE</p>
-      <h2>The app helps. The people behind it matter more.</h2>
-    </div>
-    <p>K&E Connect is not meant to replace communication with drivers. It is meant to make that communication better. The platform supports the workflow, while the K&E team remains behind the driver with real operational support. Technology keeps us connected; trust keeps the family strong.</p>
-  </section>
-
-  <section class="section future" id="future">
-    <div>
-      <p class="eyebrow">WHERE WE'RE HEADING</p>
-      <h2>Building the next generation of the K&E driver experience.</h2>
-      <p class="narrow">We are building K&E Connect step by step around the real work our drivers do. Route acceptance, airport arrival, delivery progress, maps, support, earnings visibility and driver assistance all belong in one connected experience.</p>
-      <p class="tech-tagline">Built from the operation. Improved with driver feedback. Growing with K&E.</p>
-    </div>
-    <div class="future-visual">
-      <div class="future-card">
-        <img src="kode-transparent.png" alt="KodE, K&E Connect driver helper">
-        <strong>KodE • Driver Support</strong>
-      </div>
-      <div class="future-card">
-        <img src="ke-connect-logo-new.png" alt="K&E Connect">
-        <strong>K&E Connect • Driver Platform</strong>
-      </div>
-    </div>
-  </section>
-
-  <section class="section join-family" id="join">
-    <p class="eyebrow">JOIN THE K&E FAMILY</p>
-    <h2>Looking for more than just another route?</h2>
-    <p class="narrow">We're looking for professional independent drivers who value reliability, communication, customer care and being part of something that is growing. If that sounds like you, this is where the connection starts.</p>
-    <div class="actions">
-      <a class="button primary" href="become-a-driver.html">Become a K&E Driver</a>
-      <a class="button secondary" href="mailto:Kefreightsolutions@gmail.com">Contact K&E</a>
-    </div>
-  </section>
-
-  <section class="section contact">
-    <p class="eyebrow">K&E CONNECT</p>
-    <h2>One family. One operation. One connected future.</h2>
-    <p>K&E Delivery is moving forward — and we're building K&E Connect to move with it.</p>
-  </section>
+  <section class="hero" id="home"><div class="hero-copy"><img class="hero-logo" src="ke-connect-logo-new.png" alt="K&E Connect"><p class="eyebrow">WELCOME TO K&E CONNECT</p><h1>More than an app.<br>A connection to the K&E Family.</h1><p class="lead">K&E Connect is being built for the professional drivers who keep our delivery operation moving. It brings the driver experience together in one place — clearer communication, smoother routes, stronger support and a direct connection to the K&E team.</p><div class="actions"><a class="button primary" href="become-a-driver.html">Become a K&E Driver</a><a class="button secondary" href="#about">See What We're Building</a></div></div><div class="hero-card family-card"><span class="status-dot"></span><p class="card-label">BUILT FOR THE ROAD AHEAD</p><h2>One driver. One route. One connected experience.</h2><div class="metric"><strong>Route Support</strong><span>Stay connected from acceptance to completion</span></div><div class="metric"><strong>Driver Tools</strong><span>The right information when you need it</span></div><div class="metric"><strong>K&E Family</strong><span>Real support behind the technology</span></div></div></section>
+  <section class="section identity-band" id="about"><img src="ke-connect-logo-new.png" alt="K&E Connect official logo"><p class="eyebrow">THE DRIVER SIDE OF K&E</p><h2>Built around drivers. Connected to the operation.</h2><p>K&E Connect is the home for our driver experience. The goal is simple: give drivers a clear, professional place to understand the work, accept routes, stay connected with dispatch, get the right help in the field and grow with K&E as we expand.</p></section>
+  <section class="section driver-story" id="drivers"><p class="eyebrow">WHY K&E CONNECT</p><h2>We want drivers to feel supported — not just assigned.</h2><div class="grid three"><article><span class="feature-number">01</span><h3>Clear From the Start</h3><p>Know what the route is, where you're going and what is expected before you head out. Less confusion. Better communication.</p></article><article><span class="feature-number">02</span><h3>Support in the Field</h3><p>K&E Connect is designed to keep the important information close while you're working — airport instructions, route guidance, delivery help and direct support.</p></article><article><span class="feature-number">03</span><h3>Grow With the Family</h3><p>As K&E grows into new markets, we want strong drivers growing with us. K&E Connect is part of building that long-term driver relationship.</p></article></div></section>
+  <section class="section split" id="technology"><div><p class="eyebrow">TECHNOLOGY WITH A HUMAN SIDE</p><h2>The app helps. The people behind it matter more.</h2></div><p>K&E Connect is not meant to replace communication with drivers. It is meant to make that communication better. The platform supports the workflow, while the K&E team remains behind the driver with real operational support. Technology keeps us connected; trust keeps the family strong.</p></section>
+  <section class="section future" id="future"><div><p class="eyebrow">WHERE WE'RE HEADING</p><h2>Building the next generation of the K&E driver experience.</h2><p class="narrow">We are building K&E Connect step by step around the real work our drivers do. Route acceptance, airport arrival, delivery progress, maps, support, earnings visibility and driver assistance all belong in one connected experience.</p><p class="tech-tagline">Built from the operation. Improved with driver feedback. Growing with K&E.</p></div><div class="future-visual"><div class="future-card"><img src="kode-transparent.png" alt="KodE, K&E Connect driver helper"><strong>KodE • Driver Support</strong></div><div class="future-card"><img src="ke-connect-logo-new.png" alt="K&E Connect"><strong>K&E Connect • Driver Platform</strong></div></div></section>
+  <section class="section join-family" id="join"><p class="eyebrow">JOIN THE K&E FAMILY</p><h2>Looking for more than just another route?</h2><p class="narrow">We're looking for professional independent drivers who value reliability, communication, customer care and being part of something that is growing. If that sounds like you, this is where the connection starts.</p><div class="actions"><a class="button primary" href="become-a-driver.html">Become a K&E Driver</a><a class="button secondary" href="mailto:Kefreightsolutions@gmail.com">Contact K&E</a></div></section>
+  <section class="section contact"><p class="eyebrow">K&E CONNECT</p><h2>One family. One operation. One connected future.</h2><p>K&E Delivery is moving forward — and we're building K&E Connect to move with it.</p></section>
 </main>
-
-<footer>
-  <strong>K&E Connect</strong>
-  <span>Powered by K&E Delivery</span>
-  <span>Making Connections • Building a Stronger Tomorrow</span>
-  <span>© 2026 K&E. All rights reserved.</span>
-</footer>
-</body>
-</html>
+<footer><strong>K&E Connect</strong><span>Powered by K&E Delivery</span><span>Making Connections • Building a Stronger Tomorrow</span><span>© 2026 K&E. All rights reserved.</span></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>(async()=>{const u=new URL(location.href),shouldVerify=u.searchParams.get('driver_verify')==='1'||u.searchParams.has('code')||location.hash.includes('access_token=');if(!shouldVerify)return;const overlay=document.getElementById('verifyOverlay'),msg=document.getElementById('verifyMessage');overlay.classList.add('show');try{const client=supabase.createClient('https://yvppsjgyedqcvfbhrhrm.supabase.co','sb_publishable_2QMw5NredQMVvWOHhV1gWg_YYuOryO7');const code=u.searchParams.get('code');if(code){const{error}=await client.auth.exchangeCodeForSession(code);if(error)throw error}else{const h=new URLSearchParams(location.hash.replace(/^#/,'')),access=h.get('access_token'),refresh=h.get('refresh_token');if(access&&refresh){const{error}=await client.auth.setSession({access_token:access,refresh_token:refresh});if(error)throw error}}const{data}=await client.auth.getSession();if(!data.session)throw new Error('We could not finish email verification. Please request a new application link.');history.replaceState({},document.title,'/');location.href='/driver-onboarding.html';}catch(e){msg.textContent=e.message||'We could not finish email verification. Please request a new application link.';}})();</script>
+</body></html>
