@@ -53,6 +53,14 @@ jobs:
           check(f"https://api.cloudflare.com/client/v4/accounts/{account}/workers/services/ke-connect","worker_access")
           PY
 
+      - name: Prepare website assets
+        run: |
+          rm -rf public
+          mkdir public
+          cp index.html become-a-driver.html script.js styles.css public/
+          cp kate-intent-runtime.js kate-pod-runtime.js kate-status-runtime.js public/
+          cp *.png *.webp public/ 2>/dev/null || true
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
