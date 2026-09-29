@@ -50,8 +50,8 @@ function acceptIntentAnswer(text){
   if(kateFlow.step==='instructions'){
     const answer=text.trim();
     kateFlow.deliveryInstructions=/^(none|nope|n\/a)$/i.test(answer)?'':answer;
-    const gateMatch=answer.match(/(?:gate|access|building|keypad|call\s*box)[^.!?\n]{0,50}?\bcode\b\s*(?:is|:|#|-)?\s*([A-Za-z0-9#*\-]{2,20})/i)
-      || answer.match(/\bcode\b\s*(?:is|:|#|-)?\s*([A-Za-z0-9#*\-]{2,20})/i);
+    const gateMatch=answer.match(/(?:gate|access|building|keypad|call\s*box)[^.!?\n]{0,80}?\bcode\b\s*(?:is\s+|[:=#-]\s*)?([A-Za-z0-9#*\-]{2,20})\b/i)
+      || answer.match(/\bcode\b\s*(?:is\s+|[:=#-]\s*)?([A-Za-z0-9#*\-]{2,20})\b/i);
     if(gateMatch){
       kateFlow.gateCode=gateMatch[1];
       return prepareUpdateReview();
@@ -88,7 +88,6 @@ handleFlowInput=async function(text){
   if(kateFlow.step==='review'){
     if(/^(yes|yes correct|yes that's correct|yes that is correct|correct|that's correct|that is correct|looks good|confirm|confirmed|yep|yeah)\.?$/i.test(t)){
       kateFlow.reviewReady=false;
-      addMessage('Perfect 👍 You confirmed the changes. I’m saving them for the K&E team now.');
       await saveCustomerUpdate();
       return true;
     }
