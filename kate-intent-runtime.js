@@ -48,7 +48,14 @@ function acceptIntentAnswer(text){
     return true;
   }
   if(kateFlow.step==='instructions'){
-    kateFlow.deliveryInstructions=/^(none|nope|n\/a)$/i.test(text.trim())?'':text.trim();
+    const answer=text.trim();
+    kateFlow.deliveryInstructions=/^(none|nope|n\/a)$/i.test(answer)?'':answer;
+    const gateMatch=answer.match(/(?:gate|access|building|keypad|call\s*box)(?:\s+(?:or\s+)?(?:access\s+)?code)?\s*(?:is|:|#|-)?\s*([A-Za-z0-9#*\-]{2,20})/i)
+      || answer.match(/(?:code\s+(?:is|:|#|-)?\s*)([A-Za-z0-9#*\-]{2,20})/i);
+    if(gateMatch){
+      kateFlow.gateCode=gateMatch[1];
+      return prepareUpdateReview();
+    }
     kateFlow.step='gate';
     addMessage('Last one, I promise. 😄 Is there a community gate code, building access code, or anything else the driver needs to get in? If not, type “none.”');
     input.placeholder='Gate/access code or none…';
