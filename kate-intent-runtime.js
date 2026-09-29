@@ -50,8 +50,8 @@ function acceptIntentAnswer(text){
   if(kateFlow.step==='instructions'){
     const answer=text.trim();
     kateFlow.deliveryInstructions=/^(none|nope|n\/a)$/i.test(answer)?'':answer;
-    const gateMatch=answer.match(/(?:gate|access|building|keypad|call\s*box)(?:\s+(?:or\s+)?(?:access\s+)?code)?\s*(?:is|:|#|-)?\s*([A-Za-z0-9#*\-]{2,20})/i)
-      || answer.match(/(?:code\s+(?:is|:|#|-)?\s*)([A-Za-z0-9#*\-]{2,20})/i);
+    const gateMatch=answer.match(/(?:gate|access|building|keypad|call\s*box)[^.!?\n]{0,50}?\bcode\b\s*(?:is|:|#|-)?\s*([A-Za-z0-9#*\-]{2,20})/i)
+      || answer.match(/\bcode\b\s*(?:is|:|#|-)?\s*([A-Za-z0-9#*\-]{2,20})/i);
     if(gateMatch){
       kateFlow.gateCode=gateMatch[1];
       return prepareUpdateReview();
