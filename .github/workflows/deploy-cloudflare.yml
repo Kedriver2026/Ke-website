@@ -26,6 +26,33 @@ jobs:
       - name: Checkout website
         uses: actions/checkout@v4
 
+      - name: Verify Cloudflare credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request, urllib.error
+          token=os.environ["CLOUDFLARE_API_TOKEN"]
+          account=os.environ["CLOUDFLARE_ACCOUNT_ID"]
+          def check(url, label):
+              req=urllib.request.Request(url, headers={"Authorization":f"Bearer {token}"})
+              try:
+                  with urllib.request.urlopen(req) as r:
+                      data=json.load(r)
+                      print(label, "HTTP", r.status, "success=", data.get("success"))
+              except urllib.error.HTTPError as e:
+                  body=e.read().decode("utf-8","replace")
+                  try:
+                      data=json.loads(body)
+                      errs=[{"code":x.get("code"),"message":x.get("message")} for x in data.get("errors",[])]
+                  except Exception:
+                      errs=[]
+                  print(label, "HTTP", e.code, "errors=", errs)
+          check("https://api.cloudflare.com/client/v4/user/tokens/verify","token_verify")
+          check(f"https://api.cloudflare.com/client/v4/accounts/{account}/workers/services/ke-connect","worker_access")
+          PY
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
