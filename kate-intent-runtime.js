@@ -129,7 +129,20 @@ handleFlowInput=async function(text){
     if(result.intent==='needs_value'&&kateFlow.step==='gate'){addMessage('Got it 👍 What’s the gate or access code?');input.placeholder='Enter gate/access code…';return true}
     if(result.intent==='question'){addMessage(`Absolutely—ask me anything about this delivery. I’ll answer first, then we can come right back to the confirmation.`);return true}
     if(result.intent==='correction'){addMessage(`Got it—let’s correct it instead of saving the wrong information. ${resumePrompt()}`);return true}
-    if(result.intent==='answer')return acceptIntentAnswer(text);
+    if(result.intent==='answer'){
+      // If the passenger includes a gate/access code while answering the
+      // delivery-instructions question, capture the code separately too.
+      // Example: "There's a gate at the entrance, gate code is 8888".
+      if(kateFlow.step==='instructions'){
+        const m=t.match(/\b(?:gate|access)(?:\s*\/\s*access)?\s*(?:code)?\s*(?:is|:|=|-)?\s*([A-Za-z0-9#*-]{2,20})\b/i);
+        if(m&&m[1]&&!/^(at|is|the|entrance|code)$/i.test(m[1])){
+          kateFlow.deliveryInstructions=t;
+          kateFlow.gateCode=m[1];
+          return prepareUpdateReview();
+        }
+      }
+      return acceptIntentAnswer(text);
+    }
     if(result.intent==='unknown'&&Number(result.confidence||0)<0.65){addMessage(`I’m not totally sure that was your answer, and I don’t want to save the wrong information. ${resumePrompt()}`);return true}
   }
   return originalHandleFlowInput(text);
