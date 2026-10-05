@@ -8,6 +8,7 @@ on:
     paths:
       - "index.html"
       - "become-a-driver.html"
+      - "privacy-policy.html"
       - "*.js"
       - "*.css"
       - "*.png"
@@ -57,7 +58,7 @@ jobs:
         run: |
           rm -rf public
           mkdir public
-          cp index.html become-a-driver.html script.js styles.css public/
+          cp index.html become-a-driver.html privacy-policy.html script.js styles.css public/
           cp kate-intent-runtime.js kate-pod-runtime.js kate-status-runtime.js public/
           cp *.png *.webp public/ 2>/dev/null || true
 
