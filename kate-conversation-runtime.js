@@ -72,7 +72,7 @@ handleFlowInput=async function(text){
  if(!needsConversationalAnswer(q))return await conversationBaseHandle(text);
  ensureVerifiedContext();
  // Existing evidence retrieval stays deterministic and always displays the complete photo set.
- if(kateFlow?.lastData&&(isPodQuestion(q)||isDeliveryTimingQuestion(q)||(/\battempt\b/i.test(q)&&/why|reason|photo|what happened/i.test(q))))return await conversationBaseHandle(text);
+ if(kateFlow?.lastData&&!isPhotoAcknowledgement(q)&&(isPodQuestion(q)||isDeliveryTimingQuestion(q)||(/\battempt\b/i.test(q)&&/why|reason|photo|what happened/i.test(q))))return await conversationBaseHandle(text);
  const current=kateFlow;
  try{
   const response=await fetch(KATE_INTENT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'conversation',text:q,history:kateConversationHistory.slice(-16),step:current?.step||'',orderNumber:current?.lastData?current.orderNumber:'',lastName:current?.lastData?current.lastName:''}),signal:AbortSignal.timeout(45000)});
@@ -96,6 +96,7 @@ handleFlowInput=async function(text){
   if(result.action==='human'){startKateContact(q);return true}
   return true;
  }catch{
+  if(isPhotoAcknowledgement(q)){addMessage('I’m glad the photos helped you recognize the location. I’m here if you need anything else about your delivery.');return true}
   if(/\b(status|track|bag|baggage|luggage|deliver|photo|picture)\b/i.test(q))return await conversationBaseHandle(text);
   addMessage('I’m having trouble answering that right now, but I’m still here to help with your delivery. You can ask me to check its status or photos, or contact support@kedelivery.com.');return true;
  }

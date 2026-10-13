@@ -3,7 +3,13 @@ function addKateImage(src,alt='K&E delivery photo'){const wrap=document.createEl
 function ensureVerifiedContext(){if(kateFlow?.orderNumber&&kateFlow?.lastName)return true;return typeof restoreVerifiedDelivery==='function'?restoreVerifiedDelivery():false}
 function setVerifiedInput(){if(typeof input!=='undefined'&&input)input.placeholder='Type a message to KatE…'}
 function isCasualThanks(text){const q=String(text||'').toLowerCase().trim();return /^(great|awesome|perfect|nice|cool|thank you|thanks|thank you so much|thanks so much|got it|okay|ok|all good)[!.\s]*$/.test(q)||/^[\s😀😃😄😁😊🙂🙌🙏💙❤️👍👌🎉😂🤣]+$/u.test(q)}
-function isPodQuestion(text){const q=String(text||'').toLowerCase().replace(/[’]/g,"'");return /\b(photo|photos|picture|pictures|image|images|pod|proof of delivery)\b/.test(q)||/where.*(?:deliver|delivered|left|drop|dropped)/.test(q)||/delivery\s+location|drop[- ]?off\s+location/.test(q)}
+function isPhotoAcknowledgement(text){
+ const q=String(text||'').toLowerCase().replace(/[’]/g,"'");
+ const resolved=/\bnow i (?:see|know|understand)\b|\b(?:photo|picture)s? (?:helped|helps)\b|\bthat (?:helps|helped|makes sense)\b|\b(?:i found|i have found|i got|i received) (?:it|(?:my |the )?(?:bag|bags|baggage|luggage))\b/.test(q);
+ const request=/\?|\b(?:show|send|check|can you|could you|another|more|other|additional|second|next)\b|\b(?:still|don't|do not|can't|cannot)\s+(?:see|find|understand)\b/.test(q);
+ return resolved&&!request;
+}
+function isPodQuestion(text){const q=String(text||'').toLowerCase().replace(/[’]/g,"'");if(isPhotoAcknowledgement(q))return false;return /\b(photo|photos|picture|pictures|image|images|pod|proof of delivery)\b/.test(q)||/where.*(?:deliver|delivered|left|drop|dropped)/.test(q)||/delivery\s+location|drop[- ]?off\s+location/.test(q)}
 function isBagLocationQuestion(text){return !isPodQuestion(text)&&/\bwhere\b.*\b(?:bag|bags|baggage|luggage|delivery)\b/i.test(String(text||''))}
 function isAttemptEvidenceQuestion(text){const q=String(text||'').toLowerCase().replace(/[’]/g,"'");return /why|reason|what happened|attempt|couldn'?t deliver|could not deliver|photo|picture|image|show me/.test(q)}
 function isDeliveryStatusQuestion(text){const q=String(text||'').toLowerCase().replace(/[’]/g,"'");return /did.*(?:bag|baggage|luggage|delivery).*(?:get\s+)?delivered|was.*(?:bag|baggage|luggage|delivery).*delivered|is.*(?:bag|baggage|luggage|delivery).*delivered|delivered\?/.test(q)}
