@@ -52,6 +52,14 @@ jobs:
                   print(label, "HTTP", e.code, "errors=", errs)
           check("https://api.cloudflare.com/client/v4/user/tokens/verify","token_verify")
           check(f"https://api.cloudflare.com/client/v4/accounts/{account}/workers/services/ke-connect","worker_access")
+
+          req=urllib.request.Request(f"https://api.cloudflare.com/client/v4/accounts/{account}/workers/domains",headers={"Authorization":f"Bearer {token}"})
+          try:
+              with urllib.request.urlopen(req) as r:
+                  domains=json.load(r).get("result",[])
+              print("delivery_domain_bindings",[{k:d.get(k) for k in ("hostname","service","environment")} for d in domains if "kedelivery.com" in d.get("hostname","")])
+          except urllib.error.HTTPError as e:
+              print("delivery_domain_bindings HTTP",e.code)
           PY
 
       - name: Prepare website assets
