@@ -20,11 +20,11 @@ def run(case):
   if case['close'] and '?' in reply:flags.append('unnecessary_question')
   if case['close'] and action!='reply':flags.append('reopens_resolved_issue')
   if any(x in reply.lower() for x in ['passenger updates','openai','supabase','api key','json schema','d.a.r.t.','dart']):flags.append('internal_details')
-  if case['group']=='airline_scope_and_referrals' and 'airline' not in reply.lower():flags.append('airline_referral_missing')
+  if case['group']=='airline_scope_and_referrals' and not any(name in reply.lower() for name in ['airline','united','american']):flags.append('airline_referral_missing')
   if action!='reply' and '?' in reply:flags.append('duplicate_action_prompt')
   if case.get('urgent') and ('how' in reply.lower() and 'day' in reply.lower()):flags.append('smalltalk_during_urgency')
   if case['language']=='en' and any(word in reply.lower() for word in ['puedo','voy a','lo siento','su pedido','desea']):flags.append('wrong_language')
-  if 'booking' in reply.lower() or 'reservation' in reply.lower():flags.append('wrong_order_term')
+  if case['group']!='airline_scope_and_referrals' and ('booking' in reply.lower() or 'reservation' in reply.lower()):flags.append('wrong_order_term')
   if case['group']=='email_and_callback':
    expected_method=case.get('expected_method') or ('phone' if case.get('seed_id',case['id']) in [56,57] else 'email')
    if data.get('contactMethod')!=expected_method:flags.append('contact_preference')

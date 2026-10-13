@@ -1,0 +1,1361 @@
+[
+  {
+    "id": 3,
+    "group": "thanks_and_closing",
+    "text": "Could you help? Thank you!",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 1,
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 7,
+    "group": "thanks_and_closing",
+    "text": "Please keep it brief. Thank you!",
+    "history": [
+      {
+        "role": "user",
+        "text": "Please do not start any contact request unless I specifically ask."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. I’ll answer your questions here."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 1,
+    "context_variant": "no_followup",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 8,
+    "group": "thanks_and_closing",
+    "text": "I need a clear answer. Thank you!",
+    "history": [
+      {
+        "role": "user",
+        "text": "Earlier someone promised an exact arrival time, but I need accurate information."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll rely on verified delivery information and won’t invent an arrival time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 1,
+    "context_variant": "no_guarantees",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 13,
+    "group": "thanks_and_closing",
+    "text": "Could you help? Thanks, that's all.",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 2,
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 18,
+    "group": "thanks_and_closing",
+    "text": "I need a clear answer. Thanks, that's all.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Earlier someone promised an exact arrival time, but I need accurate information."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll rely on verified delivery information and won’t invent an arrival time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 2,
+    "context_variant": "no_guarantees",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 73,
+    "group": "thanks_and_closing",
+    "text": "Could you help? Great, I appreciate it.",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 8,
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 78,
+    "group": "thanks_and_closing",
+    "text": "I need a clear answer. Great, I appreciate it.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Earlier someone promised an exact arrival time, but I need accurate information."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll rely on verified delivery information and won’t invent an arrival time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 8,
+    "context_variant": "no_guarantees",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 88,
+    "group": "thanks_and_closing",
+    "text": "I need a clear answer. No more questions. Thank you.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Earlier someone promised an exact arrival time, but I need accurate information."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll rely on verified delivery information and won’t invent an arrival time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 9,
+    "context_variant": "no_guarantees",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 145,
+    "group": "airline_scope_and_referrals",
+    "text": "Can you change my flight because my suitcase is delayed?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 149,
+    "group": "airline_scope_and_referrals",
+    "text": "My bag never arrived at the airport. Can you trace it?",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "fresh",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 151,
+    "group": "airline_scope_and_referrals",
+    "text": "My bag never arrived at the airport. Can you trace it?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 153,
+    "group": "airline_scope_and_referrals",
+    "text": "My bag never arrived at the airport. Can you trace it?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 155,
+    "group": "airline_scope_and_referrals",
+    "text": "My bag never arrived at the airport. Can you trace it?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am frustrated. Please do not ask me how my day is going."
+      },
+      {
+        "role": "assistant",
+        "text": "I understand. I’ll focus on helping with your delivery."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "upset",
+    "expected_method": null,
+    "urgent": true
+  },
+  {
+    "id": 207,
+    "group": "airline_scope_and_referrals",
+    "text": "Do you know which airline my baggage reference belongs to?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 209,
+    "group": "airline_scope_and_referrals",
+    "text": "Do you know which airline my baggage reference belongs to?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 228,
+    "group": "photo_acknowledgement",
+    "text": "I need a clear answer. That makes sense now.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Earlier someone promised an exact arrival time, but I need accurate information."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll rely on verified delivery information and won’t invent an arrival time."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "seed_id": 23,
+    "context_variant": "no_guarantees",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 239,
+    "group": "airline_scope_and_referrals",
+    "text": "I am with United. Who should handle my baggage fee refund?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 241,
+    "group": "airline_scope_and_referrals",
+    "text": "I am with United. Who should handle my baggage fee refund?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 243,
+    "group": "airline_scope_and_referrals",
+    "text": "I am with United. Who should handle my baggage fee refund?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am frustrated. Please do not ask me how my day is going."
+      },
+      {
+        "role": "assistant",
+        "text": "I understand. I’ll focus on helping with your delivery."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "upset",
+    "expected_method": null,
+    "urgent": true
+  },
+  {
+    "id": 330,
+    "group": "explicit_photo_requests",
+    "text": "Before I leave: Do you have another picture?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "photos",
+      "attempt",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 33,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 336,
+    "group": "delivery_information_updates",
+    "text": "The street number is wrong. Can I correct it?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am frustrated. Please do not ask me how my day is going."
+      },
+      {
+        "role": "assistant",
+        "text": "I understand. I’ll focus on helping with your delivery."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "upset",
+    "expected_method": null,
+    "urgent": true
+  },
+  {
+    "id": 430,
+    "group": "status_and_eta",
+    "text": "Before I leave: Has a driver picked it up?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 43,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 470,
+    "group": "status_and_eta",
+    "text": "Before I leave: Will it come tonight?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 47,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 480,
+    "group": "status_and_eta",
+    "text": "Before I leave: Has it been delivered yet?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 48,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 488,
+    "group": "status_and_eta",
+    "text": "I need a clear answer. How long until it arrives?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Earlier someone promised an exact arrival time, but I need accurate information."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll rely on verified delivery information and won’t invent an arrival time."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 49,
+    "context_variant": "no_guarantees",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 500,
+    "group": "status_and_eta",
+    "text": "Before I leave: Can you track my bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 50,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 520,
+    "group": "email_and_callback",
+    "text": "Before I leave: Please save a request for email follow-up.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I can save an email follow-up request for the K&E team if you prefer."
+      }
+    ],
+    "expected_actions": [
+      "human"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 52,
+    "context_variant": "mixed_language",
+    "expected_method": "email",
+    "urgent": false
+  },
+  {
+    "id": 521,
+    "group": "delivery_information_updates",
+    "text": "Can you change my address after the bag has been delivered?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "fresh",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 526,
+    "group": "delivery_information_updates",
+    "text": "Can you change my address after the bag has been delivered?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 590,
+    "group": "email_and_callback",
+    "text": "Before I leave: Please arrange an email follow-up, not a phone call.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I can save an email follow-up request for the K&E team if you prefer."
+      }
+    ],
+    "expected_actions": [
+      "human"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 59,
+    "context_variant": "mixed_language",
+    "expected_method": "email",
+    "urgent": false
+  },
+  {
+    "id": 595,
+    "group": "email_and_callback",
+    "text": "Just to clarify: Can the team contact me?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I do not have my BDO or order number."
+      },
+      {
+        "role": "assistant",
+        "text": "Your airline baggage office can help locate it. I can also save an email follow-up request if needed."
+      },
+      {
+        "role": "assistant",
+        "text": "I can save an email follow-up request for the K&E team if you prefer."
+      }
+    ],
+    "expected_actions": [
+      "human"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 60,
+    "context_variant": "no_order",
+    "expected_method": "email",
+    "urgent": false
+  },
+  {
+    "id": 620,
+    "group": "still_missing",
+    "text": "Before I leave: The photo shows my door, but I still can't find the bag.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos",
+      "human",
+      "update"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 62,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 651,
+    "group": "delivery_information_updates",
+    "text": "The gate code and the apartment number both need to be corrected.",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 660,
+    "group": "still_missing",
+    "text": "Before I leave: I don't recognize this location at all.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos",
+      "human",
+      "update"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 66,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 680,
+    "group": "still_missing",
+    "text": "Before I leave: I looked everywhere and no one accepted it.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos",
+      "human",
+      "update"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 68,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 686,
+    "group": "delivery_information_updates",
+    "text": "Can you guarantee the driver will see my new instructions right away?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 690,
+    "group": "still_missing",
+    "text": "Before I leave: The bag in the photo is not mine.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos",
+      "human",
+      "update"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 69,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 691,
+    "group": "delivery_information_updates",
+    "text": "Can you guarantee the driver will see my new instructions right away?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am tired after traveling all day. Please keep this simple."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. We can take it one step at a time."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "tired",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 692,
+    "group": "still_missing",
+    "text": "Please, My door number is different. Can someone help?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 70,
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 695,
+    "group": "still_missing",
+    "text": "Just to clarify: My door number is different. Can someone help?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I do not have my BDO or order number."
+      },
+      {
+        "role": "assistant",
+        "text": "Your airline baggage office can help locate it. I can also save an email follow-up request if needed."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 70,
+    "context_variant": "no_order",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 696,
+    "group": "delivery_information_updates",
+    "text": "Can you guarantee the driver will see my new instructions right away?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am frustrated. Please do not ask me how my day is going."
+      },
+      {
+        "role": "assistant",
+        "text": "I understand. I’ll focus on helping with your delivery."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "upset",
+    "expected_method": null,
+    "urgent": true
+  },
+  {
+    "id": 697,
+    "group": "still_missing",
+    "text": "Please keep it brief. My door number is different. Can someone help?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Please do not start any contact request unless I specifically ask."
+      },
+      {
+        "role": "assistant",
+        "text": "Of course. I’ll answer your questions here."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 70,
+    "context_variant": "no_followup",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 700,
+    "group": "still_missing",
+    "text": "Before I leave: My door number is different. Can someone help?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "Puedo ayudarle en español o en inglés."
+      },
+      {
+        "role": "assistant",
+        "text": "I displayed every available delivery photo. Do the photos help you recognize the location?"
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "seed_id": 70,
+    "context_variant": "mixed_language",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 726,
+    "group": "delivery_information_updates",
+    "text": "Please send my address correction by email instead of calling.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "update",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "context_variant": "welcomed",
+    "expected_method": null,
+    "urgent": false
+  },
+  {
+    "id": 1001,
+    "group": "review_controls",
+    "text": "Thank you, can you show all photos again?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1002,
+    "group": "review_controls",
+    "text": "Now I see, but I still cannot find the bag.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "photos",
+      "status",
+      "human"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1003,
+    "group": "review_controls",
+    "text": "Thanks, what time will my bag arrive?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1004,
+    "group": "review_controls",
+    "text": "Gracias, ¿me puede mostrar todas las fotos?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "photos"
+    ],
+    "close": false,
+    "language": "es"
+  },
+  {
+    "id": 1005,
+    "group": "review_controls",
+    "text": "Muchas gracias, ya encontré mi maleta.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "es"
+  },
+  {
+    "id": 1006,
+    "group": "review_controls",
+    "text": "Please email me, not a callback.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "human"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1007,
+    "group": "review_controls",
+    "text": "Prefiero que me llamen, no por correo.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "human"
+    ],
+    "close": false,
+    "language": "es"
+  },
+  {
+    "id": 1008,
+    "group": "review_controls",
+    "text": "The photo shows house 1512 but my correct address is 1514. What should I do?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status",
+      "human"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1009,
+    "group": "review_controls",
+    "text": "You deserve a coffee for helping me find my bag!",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1010,
+    "group": "review_controls",
+    "text": "Got a tiny travel joke? I found my bag and I am smiling now.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1011,
+    "group": "review_controls",
+    "text": "I am upset and my bag is missing. Please be serious.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "photos",
+      "status"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1012,
+    "group": "review_controls",
+    "text": "I am worried. No jokes please.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1013,
+    "group": "review_controls",
+    "text": "Before I leave: Can you track my bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1014,
+    "group": "review_controls",
+    "text": "¿Cuándo llegará mi maleta?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "es"
+  },
+  {
+    "id": 1015,
+    "group": "review_controls",
+    "text": "Before I leave: Can someone email me?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "human"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 1016,
+    "group": "review_controls",
+    "text": "I need a clear answer. No more questions. Thank you.",
+    "history": [
+      {
+        "role": "user",
+        "text": "Hola, hablo español e inglés."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en"
+  }
+]

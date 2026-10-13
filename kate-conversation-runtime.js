@@ -65,6 +65,12 @@ async function handleKateContact(text){
  }
  return true;
 }
+async function resumeKateConversationAction(pending){
+ if(pending.action==='photos')return await showPodPhoto();
+ if(pending.action==='attempt')return await showAttemptEvidence();
+ if(pending.action==='update'){beginConversationCorrection(pending.field);return true}
+ return await handleFlowInput(pending.text);
+}
 const conversationBaseHandle=handleFlowInput;
 handleFlowInput=async function(text){
  const q=String(text||'').trim();
@@ -89,10 +95,11 @@ handleFlowInput=async function(text){
   if(['status','photos','attempt','update'].includes(result.action)&&!verified){
    // The lookup flow supplies the next question; avoid a second overlapping introduction.
    if(result.verification==='unavailable')addMessage('I’m having trouble checking our delivery system right now. Please try again shortly or contact support@kedelivery.com.');
-   else startDeliveryLookup('status');
+   else {startDeliveryLookup('status');kateFlow.pendingConversationAction={action:result.action,field:result.updateField,text:q}}
    return true;
   }
-  if(result.reply)addMessage(result.reply);
+  // Action workflows supply their own next prompt; keep only the conversational/status answer.
+  if(result.reply&&['reply','status'].includes(result.action))addMessage(result.reply);
   if(result.action==='photos')return await showPodPhoto();
   if(result.action==='attempt')return await showAttemptEvidence();
   if(result.action==='update'){beginConversationCorrection(result.updateField);return true}
