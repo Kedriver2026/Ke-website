@@ -1,0 +1,136 @@
+name: KatE complex passenger conversations
+on:
+  workflow_dispatch:
+  push:
+    branches: [ke-delivery-kate]
+    paths: [".github/workflows/kate-complex-review.yml"]
+permissions:
+  contents: read
+concurrency:
+  group: kate-live-conversation-review
+  cancel-in-progress: false
+jobs:
+  conversations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Verify workflow behavior
+        run: |
+          node tests/kate/test-conversation-and-intake.cjs
+          node tests/kate/test-delivery-workflows.cjs
+          node tests/kate/test-contact-server.cjs
+          node tests/kate/test-photo-server.cjs
+      - name: Build 100 complex conversations
+        run: |
+          mkdir -p test-results
+          python tests/kate/build_complex_scenarios.py
+          cp tests/kate/complex-scenarios.json test-results/complex-scenarios.json
+      - name: Evaluate conversations 1-10
+        run: python -u tests/kate/run_complex_simulations.py --only "1,2,3,4,5,6,7,8,9,10" --output test-results/complex-results.json
+      - name: Save checkpoint 1
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-1
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 11-20
+        run: python -u tests/kate/run_complex_simulations.py --only "11,12,13,14,15,16,17,18,19,20" --output test-results/complex-results.json
+      - name: Save checkpoint 2
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-2
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 21-30
+        run: python -u tests/kate/run_complex_simulations.py --only "21,22,23,24,25,26,27,28,29,30" --output test-results/complex-results.json
+      - name: Save checkpoint 3
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-3
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 31-40
+        run: python -u tests/kate/run_complex_simulations.py --only "31,32,33,34,35,36,37,38,39,40" --output test-results/complex-results.json
+      - name: Save checkpoint 4
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-4
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 41-50
+        run: python -u tests/kate/run_complex_simulations.py --only "41,42,43,44,45,46,47,48,49,50" --output test-results/complex-results.json
+      - name: Save checkpoint 5
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-5
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 51-60
+        run: python -u tests/kate/run_complex_simulations.py --only "51,52,53,54,55,56,57,58,59,60" --output test-results/complex-results.json
+      - name: Save checkpoint 6
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-6
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 61-70
+        run: python -u tests/kate/run_complex_simulations.py --only "61,62,63,64,65,66,67,68,69,70" --output test-results/complex-results.json
+      - name: Save checkpoint 7
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-7
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 71-80
+        run: python -u tests/kate/run_complex_simulations.py --only "71,72,73,74,75,76,77,78,79,80" --output test-results/complex-results.json
+      - name: Save checkpoint 8
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-8
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 81-90
+        run: python -u tests/kate/run_complex_simulations.py --only "81,82,83,84,85,86,87,88,89,90" --output test-results/complex-results.json
+      - name: Save checkpoint 9
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-9
+          path: test-results/
+          retention-days: 30
+      - name: Evaluate conversations 91-100
+        run: python -u tests/kate/run_complex_simulations.py --only "91,92,93,94,95,96,97,98,99,100" --output test-results/complex-results.json
+      - name: Save checkpoint 10
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kate-complex-checkpoint-10
+          path: test-results/
+          retention-days: 30
+      - name: Record completion counts
+        if: always()
+        run: |
+          python - <<'PY'
+          import collections,json,os
+          from pathlib import Path
+          p=Path('test-results/complex-results.json')
+          d=json.loads(p.read_text()) if p.exists() else {'conversations':[]}
+          conv=d['conversations'];turns=[t for c in conv for t in c['turns']]
+          summary={'completed_conversations':len(conv),'completed_turns':len(turns),'successful_responses':sum(t['http_status']=='200' and t['response'].get('ok',False) for t in turns),'flagged_conversations':sum(c['flagged'] for c in conv),'flagged_turns':sum(bool(t['flags']) for t in turns),'flags':dict(collections.Counter(f for t in turns for f in t['flags'])),'review_required':True}
+          print(json.dumps(summary,indent=2))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('## Complex conversation screening\n\n'+json.dumps(summary,indent=2)+'\n\nReview complete transcripts; automatic flags are not a final quality rating. No real delivery records or contact requests were saved.\n')
+          if len(conv)!=100 or len(turns)!=500:raise SystemExit('Incomplete complex conversation run')
+          PY
