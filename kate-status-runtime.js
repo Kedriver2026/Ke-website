@@ -1,6 +1,45 @@
 function kateStatusKind(data){const s=String(data?.status||'').trim().toLowerCase();if(!s)return'ready';if(/delivered/.test(s))return'delivered';if(/attempt/.test(s))return'attempted';if(/out\s*for\s*delivery|ofd/.test(s))return'out_for_delivery';if(/pick(ed)?\s*up/.test(s))return'picked_up';if(/assign/.test(s)&&!/unassign/.test(s))return'assigned';if(/unassign|unassigned/.test(s))return'ready';return'other'}
 function rememberVerifiedDelivery(orderNumber,lastName,data){window.kateVerifiedDelivery={orderNumber,lastName,data,verifiedAt:Date.now()}}
-function restoreVerifiedDelivery(){const v=window.kateVerifiedDelivery;if(!v?.orderNumber||!v?.lastName)return false;kateFlow.orderNumber=v.orderNumber;kateFlow.lastName=v.lastName;if(v.data)kateFlow.lastData=v.data;return true}
+function restoreVerifiedDelivery(){
+ const v=window.kateVerifiedDelivery;
+ if(!v?.orderNumber||!v?.lastName||kateFlow)return false;
+ kateFlow={mode:'status',step:'verified_followup',orderNumber:v.orderNumber,lastName:v.lastName,lastData:v.data||null,confirmedAddress:'',confirmedPhone:'',deliveryInstructions:'',gateCode:''};
+ return true;
+}
+function isDeliveryTimingQuestion(text){
+ const q=String(text||'').toLowerCase().replace(/[’]/g,"'");
+ return /\bwhen\b.*(?:deliver|arriv|bag|baggage|luggage)|\bwhat time\b.*(?:deliver|arriv|bag|baggage|luggage)|\b(?:eta|estimated arrival|estimated delivery|delivery time)\b|how (?:much )?long.*(?:deliver|arriv|bag|baggage|luggage)/.test(q);
+}
+async function answerDeliveryTiming(){
+ const flow=kateFlow;
+ addMessage('Let me check the latest delivery status and timing for you…');
+ try{
+  const response=await fetch(DART_STATUS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderNumber:flow.orderNumber,lastName:flow.lastName,requestType:'status'}),signal:AbortSignal.timeout(15000)});
+  if(response.status===401||response.status===403||response.status===404){
+   window.kateVerifiedDelivery=null;
+   resetFlow();
+   addMessage('I couldn’t verify this delivery again. Please send the order number and passenger last name so I can check it securely.');
+   startDeliveryLookup('status');
+   return true;
+  }
+  if(!response.ok)throw new Error('lookup_failed');
+  const data=await response.json();
+  if(kateFlow!==flow)return true;
+  flow.lastData=data;
+  rememberVerifiedDelivery(flow.orderNumber,flow.lastName,data);
+  const kind=kateStatusKind(data);
+  addMessage(friendlyStatus(data));
+  if(kind!=='delivered'){
+   const scheduled=kind==='attempted'?(data.nextAttempt||data.scheduledFor||''):(data.scheduledFor||'');
+   addMessage(scheduled?`The scheduled delivery time showing in D.A.R.T. is ${scheduled}.`:'I don’t see a confirmed delivery time in D.A.R.T. yet. Please contact K&E Delivery if you need help confirming the timing.');
+  }
+  return true;
+ }catch(e){
+  addMessage('I’m having trouble checking the latest delivery time right now. Please try again shortly or contact K&E Delivery for help.');
+  return true;
+ }
+}
+
 function activeAttemptSummary(data){const when=data?.attemptedAt||data?.lastUpdate||'';return when?`D.A.R.T. shows the delivery attempt was made on ${when}, and the baggage has not been marked as successfully delivered yet.`:'D.A.R.T. shows an attempted delivery, and the baggage has not been marked as successfully delivered yet.'}
 function attemptRecoveryType(text){const q=String(text||'').toLowerCase();if(/gate|access|code|locked|entry/.test(q))return'access';if(/apartment|apt\b|unit|suite|address.*missing|incomplete address/.test(q))return'unit';if(/international|phone|contact|unable to contact|couldn.?t contact|wrong number/.test(q))return'phone';if(/wrong info|wrong information|incorrect info|bad info/.test(q))return'wrong_info';return'general'}
 function startRecovery(type){kateFlow.attemptRecoveryType=type;if(type==='access'){kateFlow.step='instructions';addMessage('The driver needs access information to complete the delivery. Please send the gate code, access code, building-entry instructions, or front-desk instructions the driver should use.');input.placeholder='Enter gate/access instructions…';return true}if(type==='unit'){kateFlow.step='address';addMessage('The delivery address appears to be incomplete. Please confirm the full address including the apartment, unit, or suite number.');input.placeholder='Enter full address with unit number…';return true}if(type==='phone'){kateFlow.step='phone';addMessage('The driver needs a reachable contact number. Please provide the best phone number for the next attempt, including the country code if it is an international number.');input.placeholder='Enter reachable phone number…';return true}kateFlow.step='address';addMessage('Let’s correct the delivery information before rescheduling. First, please confirm the complete delivery address, including any apartment, unit, or suite number.');input.placeholder='Confirm complete delivery address…';return true}
