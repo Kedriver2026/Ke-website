@@ -30,13 +30,13 @@ async function answerDeliveryTiming(options={}){
   const kind=kateStatusKind(data);
   addMessage(friendlyStatus(data));
   if(options.location){
-   if(data.deliveryAddress)addMessage(`D.A.R.T. lists the delivery address as ${data.deliveryAddress}.`);
+   if(data.deliveryAddress)addMessage(`Our delivery system lists the delivery address as ${data.deliveryAddress}.`);
    if(kind==='delivered')addMessage('If your baggage isn’t there, please check the front door, porch, side entrance, leasing office/front desk, and anyone who may have accepted it. If you still can’t find it, contact support@kedelivery.com so the K&E team can investigate. You can also ask me to check the delivery photos.');
    return true;
   }
   if(kind!=='delivered'){
    const scheduled=kind==='attempted'?(data.nextAttempt||data.scheduledFor||''):(data.scheduledFor||'');
-   addMessage(scheduled?`The scheduled delivery time showing in D.A.R.T. is ${scheduled}.`:'I don’t see a confirmed delivery time in D.A.R.T. yet. Please contact K&E Delivery if you need help confirming the timing.');
+   addMessage(scheduled?`The scheduled delivery time showing in our delivery system is ${scheduled}.`:'I don’t see a confirmed delivery time in our delivery system yet. Please contact K&E Delivery if you need help confirming the timing.');
   }
   return true;
  }catch(e){
@@ -45,7 +45,7 @@ async function answerDeliveryTiming(options={}){
  }
 }
 
-function activeAttemptSummary(data){const when=data?.attemptedAt||data?.lastUpdate||'';return when?`D.A.R.T. shows the delivery attempt was made on ${when}, and the baggage has not been marked as successfully delivered yet.`:'D.A.R.T. shows an attempted delivery, and the baggage has not been marked as successfully delivered yet.'}
+function activeAttemptSummary(data){const when=data?.attemptedAt||data?.lastUpdate||'';return when?`Our delivery system shows the delivery attempt was made on ${when}, and the baggage has not been marked as successfully delivered yet.`:'Our delivery system shows an attempted delivery, and the baggage has not been marked as successfully delivered yet.'}
 function attemptRecoveryType(text){const q=String(text||'').toLowerCase();if(/gate|access|code|locked|entry/.test(q))return'access';if(/apartment|apt\b|unit|suite|address.*missing|incomplete address/.test(q))return'unit';if(/international|phone|contact|unable to contact|couldn.?t contact|wrong number/.test(q))return'phone';if(/wrong info|wrong information|incorrect info|bad info/.test(q))return'wrong_info';return'general'}
 function startRecovery(type){kateFlow.attemptRecoveryType=type;if(type==='access'){kateFlow.step='instructions';addMessage('The driver needs access information to complete the delivery. Please send the gate code, access code, building-entry instructions, or front-desk instructions the driver should use.');input.placeholder='Enter gate/access instructions…';return true}if(type==='unit'){kateFlow.step='address';addMessage('The delivery address appears to be incomplete. Please confirm the full address including the apartment, unit, or suite number.');input.placeholder='Enter full address with unit number…';return true}if(type==='phone'){kateFlow.step='phone';addMessage('The driver needs a reachable contact number. Please provide the best phone number for the next attempt, including the country code if it is an international number.');input.placeholder='Enter reachable phone number…';return true}kateFlow.step='address';addMessage('Let’s correct the delivery information before rescheduling. First, please confirm the complete delivery address, including any apartment, unit, or suite number.');input.placeholder='Confirm complete delivery address…';return true}
 const baseFriendlyStatus=friendlyStatus;
@@ -57,14 +57,14 @@ handleFlowInput=async function(text){const q=String(text||'').toLowerCase().repl
 if(kateFlow?.step==='active_attempt'){
  if(/^(yes|yeah|yep|sure|okay|ok|please)\b/.test(q)||/why|reason|what happened|photo|picture|image/.test(q)){if(typeof showAttemptEvidence==='function')return await showAttemptEvidence();return true}
  if(/gate|access|code|locked|entry|apartment|apt\b|unit|suite|international|phone|contact|wrong info|incorrect info/.test(q))return startRecovery(attemptRecoveryType(q));
- if(/when|next attempt|redeliver|re-deliver|try again|delivery again|reschedule/.test(q)){const next=kateFlow.lastData?.nextAttempt||kateFlow.lastData?.scheduledFor||kateFlow.lastData?.deliverBy||'';if(next)addMessage(`D.A.R.T. shows the next delivery attempt is scheduled for ${next}.`);else addMessage('There is not a confirmed redelivery time showing yet. First we need to make sure the information that caused the attempt has been corrected.');addMessage('Once the correct delivery information is confirmed, this delivery can be prepared for rescheduling.');return true}
+ if(/when|next attempt|redeliver|re-deliver|try again|delivery again|reschedule/.test(q)){const next=kateFlow.lastData?.nextAttempt||kateFlow.lastData?.scheduledFor||kateFlow.lastData?.deliverBy||'';if(next)addMessage(`Our delivery system shows the next delivery attempt is scheduled for ${next}.`);else addMessage('There is not a confirmed redelivery time showing yet. First we need to make sure the information that caused the attempt has been corrected.');addMessage('Once the correct delivery information is confirmed, this delivery can be prepared for rescheduling.');return true}
  if(/address/.test(q))return startRecovery('unit');
  if(/help|options|what can you do/.test(q)){addMessage('I can check why the attempt happened, show the attempt photo, collect a gate/access code, correct a missing apartment or unit number, get a reachable phone number, correct other delivery information, and then prepare the delivery for rescheduling.');return true}
  addMessage('This delivery is still open. Let’s correct what prevented delivery so it can be rescheduled. I can start with the attempt reason/photo, address and unit number, gate/access information, or contact number.');return true}
 if(kateFlow?.step==='delivered_followup'){
- if(/when.*deliver|what time.*deliver|delivery time|what date.*deliver/.test(q)){const when=kateFlow.lastData?.deliveredAt||kateFlow.lastData?.lastUpdate||'';addMessage(when?`D.A.R.T. shows the completed delivery at ${when}.`:'I can confirm D.A.R.T. shows the order as delivered, but I don’t have a reliable completed-delivery time to give you.');return true}
+ if(/when.*deliver|what time.*deliver|delivery time|what date.*deliver/.test(q)){const when=kateFlow.lastData?.deliveredAt||kateFlow.lastData?.lastUpdate||'';addMessage(when?`Our delivery system shows the completed delivery at ${when}.`:'I can confirm our delivery system shows the order as delivered, but I don’t have a reliable completed-delivery time to give you.');return true}
  if(/attempt|attempted|email.*attempt|first attempt|previous attempt/.test(q)){if(typeof showAttemptEvidence==='function')return await showAttemptEvidence();return true}
- if(/didn'?t|did not|haven'?t|have not|not received|not here|missing|can'?t find|cannot find|where is/.test(q)){kateFlow.step='delivered_problem';addMessage('D.A.R.T. shows the delivery as completed, so let’s treat this as a delivered-but-not-received issue. Please check the front door, porch, side entrance, garage area, leasing office/front desk, and anyone else at the address who may have accepted the baggage.');return true}
+ if(/didn'?t|did not|haven'?t|have not|not received|not here|missing|can'?t find|cannot find|where is/.test(q)){kateFlow.step='delivered_problem';addMessage('Our delivery system shows the delivery as completed, so let’s treat this as a delivered-but-not-received issue. Please check the front door, porch, side entrance, garage area, leasing office/front desk, and anyone else at the address who may have accepted the baggage.');return true}
  if(/^(yes|correct|all good|got it|received|okay|ok|thanks|thank you)\b/.test(q)){addMessage('Perfect! 😊 Glad your baggage made it safely. Is there anything else I can help you with?');return true}
  addMessage('Ask me anything about this delivery—I can check the completed delivery time, proof-of-delivery photos, or whether there was an earlier delivery attempt.');return true}
 if(kateFlow?.step==='delivered_problem'){addMessage('I’m keeping this as a delivered-but-not-received problem. Tell me what you found, or ask me to review the proof-of-delivery photo or delivery location.');return true}

@@ -88,7 +88,7 @@ handleFlowInput=async function(text){
   const verified=result.verification==='verified'&&kateFlow?.lastData;
   if(['status','photos','attempt','update'].includes(result.action)&&!verified){
    // The lookup flow supplies the next question; avoid a second overlapping introduction.
-   if(result.verification==='unavailable')addMessage('I’m having trouble checking D.A.R.T. right now. Please try again shortly or contact support@kedelivery.com.');
+   if(result.verification==='unavailable')addMessage('I’m having trouble checking our delivery system right now. Please try again shortly or contact support@kedelivery.com.');
    else startDeliveryLookup('status');
    return true;
   }
