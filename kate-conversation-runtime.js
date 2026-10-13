@@ -71,8 +71,7 @@ handleFlowInput=async function(text){
  }
  if(!needsConversationalAnswer(q))return await conversationBaseHandle(text);
  ensureVerifiedContext();
- // Existing evidence retrieval stays deterministic and always displays the complete photo set.
- if(kateFlow?.lastData&&!isPhotoAcknowledgement(q)&&(isPodQuestion(q)||isDeliveryTimingQuestion(q)||(/\battempt\b/i.test(q)&&/why|reason|photo|what happened/i.test(q))))return await conversationBaseHandle(text);
+ // Natural-language intent selects actions; evidence retrieval itself stays deterministic.
  const current=kateFlow;
  try{
   const response=await fetch(KATE_INTENT_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode:'conversation',text:q,history:kateConversationHistory.slice(-16),step:current?.step||'',orderNumber:current?.lastData?current.orderNumber:'',lastName:current?.lastData?current.lastName:''}),signal:AbortSignal.timeout(45000)});
