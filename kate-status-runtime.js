@@ -10,9 +10,9 @@ function isDeliveryTimingQuestion(text){
  const q=String(text||'').toLowerCase().replace(/[’]/g,"'");
  return /\bwhen\b.*(?:deliver|arriv|bag|baggage|luggage)|\bwhat time\b.*(?:deliver|arriv|bag|baggage|luggage)|\b(?:eta|estimated arrival|estimated delivery|delivery time)\b|how (?:much )?long.*(?:deliver|arriv|bag|baggage|luggage)/.test(q);
 }
-async function answerDeliveryTiming(){
+async function answerDeliveryTiming(options={}){
  const flow=kateFlow;
- addMessage('Let me check the latest delivery status and timing for you…');
+ addMessage(options.location?'Let me check the latest status and delivery address for your baggage…':'Let me check the latest delivery status and timing for you…');
  try{
   const response=await fetch(DART_STATUS_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderNumber:flow.orderNumber,lastName:flow.lastName,requestType:'status'}),signal:AbortSignal.timeout(15000)});
   if(response.status===401||response.status===403||response.status===404){
@@ -29,6 +29,11 @@ async function answerDeliveryTiming(){
   rememberVerifiedDelivery(flow.orderNumber,flow.lastName,data);
   const kind=kateStatusKind(data);
   addMessage(friendlyStatus(data));
+  if(options.location){
+   if(data.deliveryAddress)addMessage(`D.A.R.T. lists the delivery address as ${data.deliveryAddress}.`);
+   if(kind==='delivered')addMessage('If your baggage isn’t there, please check the front door, porch, side entrance, leasing office/front desk, and anyone who may have accepted it. If you still can’t find it, contact support@kedelivery.com so the K&E team can investigate. You can also ask me to check the delivery photos.');
+   return true;
+  }
   if(kind!=='delivered'){
    const scheduled=kind==='attempted'?(data.nextAttempt||data.scheduledFor||''):(data.scheduledFor||'');
    addMessage(scheduled?`The scheduled delivery time showing in D.A.R.T. is ${scheduled}.`:'I don’t see a confirmed delivery time in D.A.R.T. yet. Please contact K&E Delivery if you need help confirming the timing.');
