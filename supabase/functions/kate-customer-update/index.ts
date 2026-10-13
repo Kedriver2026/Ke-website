@@ -13,12 +13,27 @@ async function saveContactRequest(p:any,req:Request){
  const existing=await fetch(`${url}/rest/v1/kate_customer_delivery_updates?select=id&delivery_instructions=like.${encodeURIComponent(`*Reference: ${reference}*`)}&limit=1`,{headers});if(!existing.ok)throw new Error('contact_lookup_failed');const found=await existing.json();if(found[0])return reply({ok:true,reference,requestId:found[0].id});
  const response=await fetch(`${url}/rest/v1/kate_customer_delivery_updates`,{method:'POST',headers:{...headers,'Prefer':'return=representation'},body:JSON.stringify({order_number:order||'BDO NOT PROVIDED',last_name:fullName,confirmed_address:null,confirmed_phone:method==='phone'?phone:null,delivery_instructions:instructions,gate_code:null,status:'submitted'})});if(!response.ok)throw new Error(`contact_save_failed_${response.status}`);const saved=await response.json();return reply({ok:true,reference,requestId:saved[0]?.id});
 }
+async function saveDeliveryCorrection(p:any){
+ const orderNumber=String(p.orderNumber||'').trim().toUpperCase(),lastName=String(p.lastName||'').trim().toUpperCase();
+ const columns:Record<string,string>={address:'confirmed_address',phone:'confirmed_phone',instructions:'delivery_instructions',gate:'gate_code'};
+ const entries=Object.entries(p.changes||{});
+ if(p.consent!==true||!/^[A-Z0-9]{6,30}$/.test(orderNumber)||!/^[A-Z' -]{2,60}$/.test(lastName)||!entries.length||entries.some(([field,value])=>!columns[field]||typeof value!=='string'||value.length>500||(['address','phone'].includes(field)&&!value.trim())))return reply({error:'invalid_correction'},400);
+ const url=Deno.env.get('SUPABASE_URL'),key=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');if(!url||!key)return reply({error:'service_unavailable'},503);
+ const check=await fetch(`${url}/functions/v1/kate-dart-status`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderNumber,lastName,requestType:'status'}),signal:AbortSignal.timeout(15000)});
+ if(!check.ok)return reply({error:'verification_required'},[401,403,404].includes(check.status)?403:503);
+ // A submitted request for staff review, not a claim that the delivery record changed.
+ const record:any={order_number:orderNumber,last_name:lastName,status:'submitted'};
+ for(const [field,value] of entries)record[columns[field]]=String(value).trim();
+ const r=await fetch(`${url}/rest/v1/kate_customer_delivery_updates`,{method:'POST',headers:{apikey:key,Authorization:`Bearer ${key}`,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify(record)});
+ if(!r.ok)throw new Error('correction_save_failed');return reply({ok:true});
+}
 Deno.serve(async(req)=>{
  if(req.method==='OPTIONS')return new Response('ok',{headers:corsHeaders});
  if(req.method!=='POST')return reply({error:'method_not_allowed'},405);
  try{
   const p=await req.json();
   if(p?.mode==='contact_request')return await saveContactRequest(p,req);
+  if(p?.mode==='delivery_correction')return await saveDeliveryCorrection(p);
   const orderNumber=String(p?.orderNumber||'').trim().toUpperCase();
   const lastName=String(p?.lastName||'').trim().toUpperCase();
   const confirmedAddress=String(p?.confirmedAddress||'').trim().slice(0,300);
@@ -26,10 +41,6 @@ Deno.serve(async(req)=>{
   const deliveryInstructions=String(p?.deliveryInstructions||'').trim().slice(0,500);
   const gateCode=String(p?.gateCode||'').trim().slice(0,100);
   if(!/^[A-Z0-9]{6,30}$/.test(orderNumber)||!/^[A-Z' -]{2,60}$/.test(lastName)||!confirmedAddress||!confirmedPhone)return reply({error:'invalid_request'},400);
-  const url=Deno.env.get('SUPABASE_URL'); const key=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  if(!url||!key)throw new Error('runtime credentials unavailable');
-  const r=await fetch(`${url}/rest/v1/kate_customer_delivery_updates`,{method:'POST',headers:{'apikey':key,'Authorization':`Bearer ${key}`,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({order_number:orderNumber,last_name:lastName,confirmed_address:confirmedAddress,confirmed_phone:confirmedPhone,delivery_instructions:deliveryInstructions||null,gate_code:gateCode||null,status:'submitted'})});
-  if(!r.ok)throw new Error(`save failed ${r.status}`);
-  return reply({ok:true});
+  return await saveDeliveryCorrection({orderNumber,lastName,consent:p.consent,changes:{address:confirmedAddress,phone:confirmedPhone,instructions:deliveryInstructions,gate:gateCode}});
  }catch(e){console.error('kate-customer-update error',e);return reply({error:'service_unavailable'},502)}
 });

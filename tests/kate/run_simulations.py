@@ -5,7 +5,7 @@ suite=json.loads(Path(args.scenarios).read_text());cases=suite;ids={int(x) for x
 endpoint='https://yvppsjgyedqcvfbhrhrm.supabase.co/functions/v1/kate-intent'
 out=Path(args.output);previous=json.loads(out.read_text()) if out.exists() else {};results=previous.get('results',[]);done_ids={r['id'] for r in results};cases_total=len(suite);cases=[c for c in cases if c['id'] not in done_ids];started=time.monotonic();started_at=datetime.datetime.now(datetime.timezone.utc).isoformat()
 def run(case):
- payload={'mode':'conversation','text':case['text'],'history':case['history']}
+ payload={'mode':'conversation','text':case['text'],'history':case['history'],'step':case.get('step','')}
  for retry in range(3):
   cmd=['curl','-sS','--max-time','45','-H','Content-Type: application/json','--data-binary','@-',endpoint,'-w','\n%{http_code}']
   r=subprocess.run(cmd,input=json.dumps(payload),capture_output=True,text=True);raw,_,status=r.stdout.rpartition('\n')
