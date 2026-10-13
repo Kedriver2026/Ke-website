@@ -307,7 +307,8 @@
     "Several greetings/request-free messages unnecessarily introduced tracking.",
     "Multiple correction fields required preserving both and reviewing only requested fields.",
     "Natural cancellation and contact preference changes required frontend handling.",
-    "Legacy saved-update acknowledgements used unsolicited jokes regardless of distress."
+    "Legacy saved-update acknowledgements used unsolicited jokes regardless of distress.",
+    "One fresh wrong-location reply incorrectly suggested airline tracing; delivery-photo concerns now stay with K&E, while mixed airline claims/fees retain the airline referral."
   ],
   "fixes": [
     "Scoped positive contact intent; negated calls and process questions stay conversational.",
@@ -318,11 +319,12 @@
     "Email-first intake, natural withdrawal, bilingual preference switching.",
     "Requested correction fields collected once and explicitly reviewed; backend verifies before saving pending request.",
     "Reverification resumes original action and requested correction fields.",
-    "No canned joke on correction save."
+    "No canned joke on correction save.",
+    "Wrong-photo delivery concerns cannot be redirected to airport tracing; preserve airline referrals for mixed claims/refund/fee requests."
   ],
   "local_integration_suites_passed": 5,
   "deployment": {
-    "kate_intent": 21,
+    "kate_intent": 23,
     "kate_customer_update": 7,
     "frontend_version": "20261013-complex2"
   },
@@ -330,9 +332,36 @@
     "Real authorized passenger delivery verification and staff handling of saved requests require final operational acceptance before October 15."
   ],
   "rechecks": {
-    "version20_contextual_cases": 100,
-    "version21_contextual_cases_requested": 47,
-    "version21_five_turn_conversations_requested": 6,
-    "results": "See accompanying raw synthetic results; final counts recorded after completion."
+    "version20_contextual_cases_completed": 100,
+    "version20_execution_successes": 100,
+    "version20_manual_findings": "Remaining workflow narration, blanket delivered-record wording and a prefaced question misclassification prompted v21 fixes.",
+    "version21_contextual_cases_completed": 47,
+    "version21_execution_successes": 47,
+    "version21_fresh_conversations_completed": 6,
+    "version21_fresh_turns": 30,
+    "version21_execution_successes_fresh": 30,
+    "version21_manual_findings": "One inappropriate airline referral on a wrong-location photo was fixed in v22/v23.",
+    "version22_boundary_cases": 10,
+    "version22_successes": 2,
+    "version22_test_connection_failures": 8,
+    "version22_connection_failure_details": "HTTP 000 from curl connection timeout or CONNECT tunnel 403. No model response was received for those eight cases. Full boundary batch rerun afterward.",
+    "version23_boundary_final_requested": 12,
+    "screening_note": "All replies manually reviewed; screening success is not a quality score.",
+    "version23_boundary_final_completed": 12,
+    "version23_boundary_final_successes": 12,
+    "successful_followup_replies_manually_reviewed": 191,
+    "followup_test_attempts_recorded": 199,
+    "transport_failures_retried": 8,
+    "remaining_confirmed_failures_after_targeted_checks": 0,
+    "scope_limit": "Final v23 changes were tested on the relevant 12 boundary cases; the full original 500-turn suite was not rerun."
+  },
+  "public_files_verification": {
+    "date": "2026-10-13",
+    "frontend": "20261013-complex2",
+    "pages_commit": "1567a1da2d73cea7bb22b85afc0a6abfb12c00c3",
+    "pages_ke_website_check": "success",
+    "script_js_sha256": "4509fce8b1f1b4921384591dea031c1cf3b36f099da50f6bac2877e62fceee34",
+    "conversation_runtime_sha256": "3c80be36480a0b28be3da3536d3b68bd608b885efb91be3fe69fca4f8162f1e6",
+    "match": "Exact public runtime bytes matched reviewed local sources."
   }
 }

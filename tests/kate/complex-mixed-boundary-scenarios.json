@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "group": "mixed_delivery_and_airline",
+    "text": "The delivery photo shows a wrong house. Can K&E refund the United baggage fee?",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 2,
+    "group": "mixed_delivery_and_airline",
+    "text": "The delivery photo shows a different door. Separately, how do I request compensation from the airline handling my claim?",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en"
+  }
+]

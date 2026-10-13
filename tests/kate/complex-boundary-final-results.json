@@ -1,0 +1,315 @@
+{
+  "started_at": "2026-10-13T16:08:51.654953+00:00",
+  "cases_total": 12,
+  "completed": 12,
+  "results": [
+    {
+      "id": 1,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I have only two minutes. Please be direct. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 2,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I am worried after a difficult trip. Please be patient. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 3,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I need facts, not reassurance. Tell me what is verified. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I can check which delivery details are verified in your record and pull all available delivery photos for you to review; verification is required to proceed.",
+        "action": "status",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 4,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I am frustrated with this experience. Do not joke about it. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 5,
+      "group": "wrong_location_delivery_boundary",
+      "text": "Sorry if this is a silly question; I am unfamiliar with delivery tracking. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "Not a silly question—thanks for checking. If the photo shows a house you don’t recognize, you can (1) ask me to show all available delivery photos so you can look for landmarks or a different angle, or (2) request that the K&E team review the delivery record and photos for you. Which would you like me to do?",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 6,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I have had a long journey and a lot to say, but I do need help. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 7,
+      "group": "wrong_location_delivery_boundary",
+      "text": "Please distinguish delivery records, passenger reports, and confirmed actions. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 8,
+      "group": "wrong_location_delivery_boundary",
+      "text": "Apparently my suitcase took its own vacation. I still need practical help. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 9,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I may change my mind as we talk. Please check what I want now. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows an unfamiliar house. I can show all available delivery photos for you to review, or save an email follow-up so the K&E team can review the delivery and concern—what would you like me to do?",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 10,
+      "group": "wrong_location_delivery_boundary",
+      "text": "I speak English and Spanish; follow the language I use in each message. The delivery photo shows a house I do not recognize. What should I do?",
+      "history": [],
+      "expected_actions": [
+        "reply",
+        "status",
+        "photos"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "I’m sorry the photo shows a place you do not recognize. The K&E team can review this delivery. I can show all available delivery photos or collect an email follow-up request if you’d like.",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 11,
+      "group": "mixed_delivery_and_airline",
+      "text": "The delivery photo shows a wrong house. Can K&E refund the United baggage fee?",
+      "history": [],
+      "expected_actions": [
+        "reply"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "K&E cannot refund airline baggage fees — refunds for United baggage charges must be handled by United’s baggage service or customer service. If the delivery photo shows the wrong house, the K&E team can review the delivery record and photos; would you like me to request an email follow-up from the K&E team to investigate?",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    },
+    {
+      "id": 12,
+      "group": "mixed_delivery_and_airline",
+      "text": "The delivery photo shows a different door. Separately, how do I request compensation from the airline handling my claim?",
+      "history": [],
+      "expected_actions": [
+        "reply"
+      ],
+      "close": false,
+      "language": "en",
+      "response": {
+        "ok": true,
+        "reply": "Sorry to see the photo shows a different door — I can have the K&E team review the delivery record and available photos. For compensation, you must contact the airline that handled your baggage claim; the airline’s baggage service office or customer-service team handles lost/damaged-baggage compensation and can tell you how to file a claim. Would you like me to request a K&E review of the delivery record and images?",
+        "action": "reply",
+        "updateField": "none",
+        "contactMethod": "none",
+        "language": "en",
+        "verification": "required",
+        "delivery": null
+      },
+      "http_status": "200",
+      "flags": [],
+      "review_status": "automatic_checks_passed"
+    }
+  ]
+}

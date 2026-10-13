@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I have only two minutes. Please be direct. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 2,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I am worried after a difficult trip. Please be patient. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 3,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I need facts, not reassurance. Tell me what is verified. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 4,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I am frustrated with this experience. Do not joke about it. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 5,
+    "group": "wrong_location_delivery_boundary",
+    "text": "Sorry if this is a silly question; I am unfamiliar with delivery tracking. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 6,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I have had a long journey and a lot to say, but I do need help. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 7,
+    "group": "wrong_location_delivery_boundary",
+    "text": "Please distinguish delivery records, passenger reports, and confirmed actions. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 8,
+    "group": "wrong_location_delivery_boundary",
+    "text": "Apparently my suitcase took its own vacation. I still need practical help. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 9,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I may change my mind as we talk. Please check what I want now. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  },
+  {
+    "id": 10,
+    "group": "wrong_location_delivery_boundary",
+    "text": "I speak English and Spanish; follow the language I use in each message. The delivery photo shows a house I do not recognize. What should I do?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "photos"
+    ],
+    "close": false,
+    "language": "en"
+  }
+]

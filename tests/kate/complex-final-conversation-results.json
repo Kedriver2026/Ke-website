@@ -1,0 +1,792 @@
+{
+  "started_at": "2026-10-13T16:03:24.054326+00:00",
+  "requested_conversations": 6,
+  "completed_conversations": 6,
+  "completed_turns": 30,
+  "scope": "Live AI conversation responses with actual preceding AI replies; no real delivery verification, frontend intake execution or contact saves. Workflow integration tests run separately with synthetic providers.",
+  "conversations": [
+    {
+      "id": 1,
+      "personality": "impatient",
+      "journey": "wrong_location",
+      "turns": [
+        {
+          "turn": 1,
+          "passenger": "I have only two minutes. Please be direct. The delivery photo shows a house I do not recognize. What should I do?",
+          "expected": {
+            "text": "I have only two minutes. Please be direct. The delivery photo shows a house I do not recognize. What should I do?",
+            "expected_actions": [
+              "reply",
+              "status",
+              "photos"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "If the photo shows a house you don’t recognize, first compare the address on your baggage paperwork or confirmation to your home address. If the recorded address isn’t yours or the bag is missing, contact the airline’s baggage office to trace it (they handle airport tracing), or I can ask the K&E team to review and email you — would you like that?",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 2,
+          "passenger": "My address on the order is correct. Do NOT change it just because the photo shows another house.",
+          "expected": {
+            "text": "My address on the order is correct. Do NOT change it just because the photo shows another house.",
+            "expected_actions": [
+              "reply",
+              "status"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "Understood — I will not change your recorded address without your explicit request. I can show all available delivery photos for you to review, or save an email follow-up so the K&E team can review the concern. Which would you like?",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 3,
+          "passenger": "Please keep the answer short. Can you guarantee the driver will retrieve it within ten minutes?",
+          "expected": {
+            "text": "Please keep the answer short. Can you guarantee the driver will retrieve it within ten minutes?",
+            "expected_actions": [
+              "reply",
+              "status"
+            ],
+            "language": "en",
+            "no_guarantee": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "I cannot guarantee a driver return, retrieval or response time. The K&E team can review the concern; delivery corrections do not automatically schedule another attempt.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 4,
+          "passenger": "Can the K&E team email me to review the wrong delivery location?",
+          "expected": {
+            "text": "Can the K&E team email me to review the wrong delivery location?",
+            "expected_actions": [
+              "human"
+            ],
+            "language": "en",
+            "method": "email"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect a follow-up request for the K&E team.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "email",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 5,
+          "passenger": "Before collecting anything, did you already send that email?",
+          "expected": {
+            "text": "Before collecting anything, did you already send that email?",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "no_completion_claim": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "Collecting your details does not send an email. With your confirmation, I can save your name, preferred email or callback number, concern and this chat for K&E to review; a delivery number is optional. K&E staff handle any email or call separately, and I cannot confirm one has happened.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        }
+      ],
+      "flagged": false
+    },
+    {
+      "id": 10,
+      "personality": "impatient",
+      "journey": "ambiguous_and_changed_preferences",
+      "turns": [
+        {
+          "turn": 1,
+          "passenger": "I have only two minutes. Please be direct. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+          "expected": {
+            "text": "I have only two minutes. Please be direct. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "Of course. What would you like to ask?",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 2,
+          "passenger": "Can the team contact me? I would prefer a written email record.",
+          "expected": {
+            "text": "Can the team contact me? I would prefer a written email record.",
+            "expected_actions": [
+              "human"
+            ],
+            "language": "en",
+            "method": "email"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect a follow-up request for the K&E team.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "email",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 3,
+          "passenger": "Please keep the answer short. Do not call me. Is collecting my details the same as sending an email?",
+          "expected": {
+            "text": "Please keep the answer short. Do not call me. Is collecting my details the same as sending an email?",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "no_completion_claim": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "Collecting your details does not send an email. With your confirmation, I can save your name, preferred email or callback number, concern and this chat for K&E to review; a delivery number is optional. K&E staff handle any email or call separately, and I cannot confirm one has happened.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 4,
+          "passenger": "Wait, I changed my mind: I DO want a callback instead of email.",
+          "expected": {
+            "text": "Wait, I changed my mind: I DO want a callback instead of email.",
+            "expected_actions": [
+              "human",
+              "reply"
+            ],
+            "language": "en",
+            "method": "phone"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect a follow-up request for the K&E team.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "phone",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 5,
+          "passenger": "No. I mean I still need help, not that I am finished. Please explain my options.",
+          "expected": {
+            "text": "No. I mean I still need help, not that I am finished. Please explain my options.",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "not_close": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "You can request a written email follow-up or a phone callback. I can collect your contact (email for written record, phone for a callback), your name, and a short concern; saving those details creates a K&E review request but does not itself send an email or place a call—K&E staff will contact you separately. If you also want K&E to review delivery records or make corrections, I should collect your order/BDO number and last name for verification. Would you like me to save a callback request now?",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        }
+      ],
+      "flagged": false
+    },
+    {
+      "id": 24,
+      "personality": "skeptical",
+      "journey": "language_switch",
+      "turns": [
+        {
+          "turn": 1,
+          "passenger": "I need facts, not reassurance. Tell me what is verified. Can you show all delivery photos, including earlier attempts?",
+          "expected": {
+            "text": "I need facts, not reassurance. Tell me what is verified. Can you show all delivery photos, including earlier attempts?",
+            "expected_actions": [
+              "photos",
+              "attempt"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can show all available delivery photos after verifying the order.",
+            "action": "photos",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 2,
+          "passenger": "No tengo el número de entrega. ¿Cómo puedo conseguir ayuda?",
+          "expected": {
+            "text": "No tengo el número de entrega. ¿Cómo puedo conseguir ayuda?",
+            "expected_actions": [
+              "reply",
+              "human"
+            ],
+            "language": "es",
+            "no_order_repeat": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "Sin el número de entrega no puedo acceder a una entrega verificada ni solicitar cambios aquí. Puede pedirlo a la oficina de equipajes de su aerolínea o solicitar seguimiento por correo de K&E sin el número para que el equipo revise su consulta.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "es",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 3,
+          "passenger": "What can you actually confirm, rather than assume? Please answer in English now. Can someone follow up by email?",
+          "expected": {
+            "text": "What can you actually confirm, rather than assume? Please answer in English now. Can someone follow up by email?",
+            "expected_actions": [
+              "human"
+            ],
+            "language": "en",
+            "method": "email"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect a follow-up request for the K&E team.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "email",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 4,
+          "passenger": "Prefiero una llamada, no correo electrónico. ¿Puede recopilar una solicitud?",
+          "expected": {
+            "text": "Prefiero una llamada, no correo electrónico. ¿Puede recopilar una solicitud?",
+            "expected_actions": [
+              "human"
+            ],
+            "language": "es",
+            "method": "phone"
+          },
+          "response": {
+            "ok": true,
+            "reply": "Puedo recopilar una solicitud de seguimiento para el equipo de K&E.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "phone",
+            "language": "es",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 5,
+          "passenger": "Gracias, cambié de opinión. No guarde nada; eso es todo.",
+          "expected": {
+            "text": "Gracias, cambié de opinión. No guarde nada; eso es todo.",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "es",
+            "close": true,
+            "no_completion_claim": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "Entendido. No guardaré nada. Que tenga un buen día.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "es",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        }
+      ],
+      "flagged": false
+    },
+    {
+      "id": 33,
+      "personality": "angry",
+      "journey": "conflicting_updates",
+      "turns": [
+        {
+          "turn": 1,
+          "passenger": "I am frustrated with this experience. Do not joke about it. The apartment number and contact phone are wrong. Can I request corrections?",
+          "expected": {
+            "text": "I am frustrated with this experience. Do not joke about it. The apartment number and contact phone are wrong. Can I request corrections?",
+            "expected_actions": [
+              "reply",
+              "update"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I’m sorry you’re dealing with this — I won’t joke. Yes, you can request corrections to the apartment number and contact phone and the K&E team can review them. If you’d like me to start that correction request now, tell me and I’ll begin the process.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 2,
+          "passenger": "Keep the street address the same; only the apartment and phone should change.",
+          "expected": {
+            "text": "Keep the street address the same; only the apartment and phone should change.",
+            "expected_actions": [
+              "reply",
+              "update"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect the requested corrections for the K&E team to review.",
+            "action": "update",
+            "updateField": "address",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 3,
+          "passenger": "I need you to take this seriously. Do not save yet. Does a correction automatically move the delivery to tonight?",
+          "expected": {
+            "text": "I need you to take this seriously. Do not save yet. Does a correction automatically move the delivery to tonight?",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "no_guarantee": true,
+            "no_completion_claim": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "A correction request does not physically move a bag or automatically reschedule a delivery. The K&E team can review the recorded details and your concern; a new attempt or delivery time needs separate confirmation.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 4,
+          "passenger": "My bag may already be marked delivered. Would changing details now move the bag?",
+          "expected": {
+            "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+            "expected_actions": [
+              "reply",
+              "status"
+            ],
+            "language": "en",
+            "no_guarantee": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "A correction request does not physically move a bag or automatically reschedule a delivery. The K&E team can review the recorded details and your concern; a new attempt or delivery time needs separate confirmation.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 5,
+          "passenger": "Thanks, I understand the difference. Do not start anything else.",
+          "expected": {
+            "text": "Thanks, I understand the difference. Do not start anything else.",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "close": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "Understood — I won’t start anything. I’m here if you decide to request the corrections or need anything else.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        }
+      ],
+      "flagged": false
+    },
+    {
+      "id": 76,
+      "personality": "sarcastic",
+      "journey": "attempt_and_access",
+      "turns": [
+        {
+          "turn": 1,
+          "passenger": "Apparently my suitcase took its own vacation. I still need practical help. There was a delivery attempt at a locked gate. Can you explain what happened?",
+          "expected": {
+            "text": "Apparently my suitcase took its own vacation. I still need practical help. There was a delivery attempt at a locked gate. Can you explain what happened?",
+            "expected_actions": [
+              "reply",
+              "attempt",
+              "status"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can check the delivery record and explain the locked-gate attempt. I’ll need to verify your order before I can view the delivery details.",
+            "action": "status",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 2,
+          "passenger": "I think the gate caused it, but do you have verified notes or are you guessing?",
+          "expected": {
+            "text": "I think the gate caused it, but do you have verified notes or are you guessing?",
+            "expected_actions": [
+              "reply",
+              "attempt",
+              "status"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I don’t have verified delivery notes here and I won’t guess — I can check the delivery record and any driver notes about the locked gate once you verify your order (BDO/order number) and last name.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 3,
+          "passenger": "That would be nice, but I need a useful answer, not a slogan. I need to request a new gate code AND business-hour instructions. Can you help?",
+          "expected": {
+            "text": "That would be nice, but I need a useful answer, not a slogan. I need to request a new gate code AND business-hour instructions. Can you help?",
+            "expected_actions": [
+              "update",
+              "reply"
+            ],
+            "language": "en"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect the requested corrections for the K&E team to review.",
+            "action": "update",
+            "updateField": "gate",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 4,
+          "passenger": "If I add them, can you promise another attempt in the next hour?",
+          "expected": {
+            "text": "If I add them, can you promise another attempt in the next hour?",
+            "expected_actions": [
+              "reply",
+              "status"
+            ],
+            "language": "en",
+            "no_guarantee": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "I cannot guarantee a driver return, retrieval or response time. The K&E team can review the concern; delivery corrections do not automatically schedule another attempt.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 5,
+          "passenger": "Please have K&E call me about access. I specifically prefer a callback.",
+          "expected": {
+            "text": "Please have K&E call me about access. I specifically prefer a callback.",
+            "expected_actions": [
+              "human"
+            ],
+            "language": "en",
+            "method": "phone"
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect a follow-up request for the K&E team.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "phone",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        }
+      ],
+      "flagged": false
+    },
+    {
+      "id": 97,
+      "personality": "bilingual",
+      "journey": "urgent_without_promises",
+      "turns": [
+        {
+          "turn": 1,
+          "passenger": "I speak English and Spanish; follow the language I use in each message. My delivered bag is missing and contains items I urgently need. Please take this seriously.",
+          "expected": {
+            "text": "I speak English and Spanish; follow the language I use in each message. My delivered bag is missing and contains items I urgently need. Please take this seriously.",
+            "expected_actions": [
+              "reply",
+              "status",
+              "photos"
+            ],
+            "language": "en",
+            "serious": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "I’m sorry your delivered bag is missing — I take this seriously. I can check the delivery record and get details for you now.",
+            "action": "status",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 2,
+          "passenger": "Can you personally call the driver and tell me you did it?",
+          "expected": {
+            "text": "Can you personally call the driver and tell me you did it?",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "no_completion_claim": true,
+            "serious": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "I cannot call the driver or claim I did. I can help review the delivery record and photos, or collect an email follow-up request for K&E if you want.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 3,
+          "passenger": "Please follow the language of this message. Do not promise a response time you cannot verify. What help is available?",
+          "expected": {
+            "text": "Please follow the language of this message. Do not promise a response time you cannot verify. What help is available?",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "no_guarantee": true,
+            "serious": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can: check your K&E delivery record (I’ll need your order/BDO number and last name for that), show all delivery and attempt photos, review attempted-delivery details, or start an email follow-up request for the K&E team to review the missing bag. I cannot call drivers, contact the airline about baggage before K&E handoff, send messages or refunds myself, or guarantee response times. Would you like me to check the delivery status or show available photos now?",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 4,
+          "passenger": "Yes, please collect an email follow-up request for K&E.",
+          "expected": {
+            "text": "Yes, please collect an email follow-up request for K&E.",
+            "expected_actions": [
+              "human"
+            ],
+            "language": "en",
+            "method": "email",
+            "serious": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "I can collect a follow-up request for the K&E team.",
+            "action": "human",
+            "updateField": "none",
+            "contactMethod": "email",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        },
+        {
+          "turn": 5,
+          "passenger": "If no one answers immediately, does that mean you actually sent an email?",
+          "expected": {
+            "text": "If no one answers immediately, does that mean you actually sent an email?",
+            "expected_actions": [
+              "reply"
+            ],
+            "language": "en",
+            "no_completion_claim": true,
+            "serious": true
+          },
+          "response": {
+            "ok": true,
+            "reply": "Collecting your details does not send an email. With your confirmation, I can save your name, preferred email or callback number, concern and this chat for K&E to review; a delivery number is optional. K&E staff handle any email or call separately, and I cannot confirm one has happened.",
+            "action": "reply",
+            "updateField": "none",
+            "contactMethod": "none",
+            "language": "en",
+            "verification": "required",
+            "delivery": null
+          },
+          "http_status": "200",
+          "flags": []
+        }
+      ],
+      "flagged": false
+    }
+  ]
+}
