@@ -1,0 +1,209 @@
+[
+  {
+    "id": 101,
+    "group": "comfort_and_listening",
+    "text": "Pretty good, thanks for asking.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 102,
+    "group": "comfort_and_listening",
+    "text": "Honestly, my day has been terrible. My flight was delayed.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 103,
+    "group": "comfort_and_listening",
+    "text": "I am exhausted and have been traveling all day.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 104,
+    "group": "comfort_and_listening",
+    "text": "Not great. I am really worried about my missing luggage.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 105,
+    "group": "comfort_and_listening",
+    "text": "I am in a hurry. Can you check my delivery status right now?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": true
+  },
+  {
+    "id": 106,
+    "group": "comfort_and_listening",
+    "text": "Please do not ask about my day. I just need the delivery photos.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "photos",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": true
+  },
+  {
+    "id": 107,
+    "group": "comfort_and_listening",
+    "text": "How is your day going, KatE?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 108,
+    "group": "comfort_and_listening",
+    "text": "Do you actually understand what I am saying?",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 109,
+    "group": "comfort_and_listening",
+    "text": "You are making me feel better, thank you.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "en",
+    "urgent": false
+  },
+  {
+    "id": 110,
+    "group": "comfort_and_listening",
+    "text": "Mi día ha sido pesado, llevo muchas horas viajando.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "es",
+    "urgent": false
+  },
+  {
+    "id": 111,
+    "group": "comfort_and_listening",
+    "text": "Estoy apurado. Necesito ver las fotos de mi entrega.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "photos",
+      "status"
+    ],
+    "close": false,
+    "language": "es",
+    "urgent": true
+  },
+  {
+    "id": 112,
+    "group": "comfort_and_listening",
+    "text": "Gracias por escucharme, ya encontré la maleta.",
+    "history": [
+      {
+        "role": "assistant",
+        "text": "Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": true,
+    "language": "es",
+    "urgent": false
+  }
+]

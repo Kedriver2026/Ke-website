@@ -1,3 +1,8 @@
+const KATE_WELCOME='Hi! I’m KatE, K&E’s AI delivery assistant. How’s your day going? If you’re here about your baggage, I’m ready to help.';
+function isKateApproval(text){
+ const q=String(text||'').toLowerCase().replace(/[’]/g,"'").replace(/[,.!]/g,' ').replace(/\s+/g,' ').trim();
+ return /^(?:yes(?: (?:please|correct|that's correct|that is correct|everything is correct|looks good|looks right))?|correct|that's correct|that is correct|looks good|looks right|confirm|confirmed|yep|yeah|save|save it|please save it|sí(?: (?:por favor|correcto|es correcto))?|si(?: (?:por favor|correcto|es correcto))?|correcto|confirmo)(?: (?:thanks|thank you|gracias|muchas gracias)(?: very much| so much)?)?$/.test(q);
+}
 const launcher=document.getElementById('kateLauncher');
 const panel=document.getElementById('katePanel');
 const closeBtn=document.getElementById('kateClose');

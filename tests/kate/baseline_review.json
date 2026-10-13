@@ -1,0 +1,117 @@
+{
+  "cases": 100,
+  "backend_version": 11,
+  "issue_cases": {
+    "32": [
+      "duplicate_permission"
+    ],
+    "34": [
+      "duplicate_permission"
+    ],
+    "36": [
+      "missed_mixed_intent"
+    ],
+    "37": [
+      "wrong_language"
+    ],
+    "38": [
+      "duplicate_permission",
+      "booking_wording"
+    ],
+    "42": [
+      "reservation_wording"
+    ],
+    "45": [
+      "booking_wording"
+    ],
+    "46": [
+      "duplicate_permission"
+    ],
+    "47": [
+      "duplicate_permission"
+    ],
+    "49": [
+      "duplicate_permission"
+    ],
+    "50": [
+      "duplicate_permission",
+      "booking_wording"
+    ],
+    "63": [
+      "premature_intake"
+    ],
+    "64": [
+      "premature_intake",
+      "duplicate_permission"
+    ],
+    "65": [
+      "wrong_language",
+      "duplicate_permission"
+    ],
+    "66": [
+      "duplicate_permission"
+    ],
+    "67": [
+      "premature_intake",
+      "implementation_wording"
+    ],
+    "69": [
+      "duplicate_permission"
+    ],
+    "76": [
+      "duplicate_permission"
+    ],
+    "77": [
+      "duplicate_permission",
+      "unconfirmed_timing_wording"
+    ],
+    "82": [
+      "implementation_wording"
+    ],
+    "84": [
+      "premature_intake",
+      "duplicate_permission"
+    ],
+    "85": [
+      "premature_intake",
+      "duplicate_permission"
+    ],
+    "86": [
+      "premature_intake",
+      "duplicate_permission"
+    ],
+    "87": [
+      "unsupported_case_closure",
+      "premature_intake",
+      "duplicate_permission"
+    ],
+    "89": [
+      "unnecessary_status_offer"
+    ],
+    "90": [
+      "premature_intake",
+      "duplicate_permission"
+    ],
+    "91": [
+      "cold_social_reply"
+    ],
+    "94": [
+      "implementation_wording"
+    ],
+    "95": [
+      "unnecessary_followup_question"
+    ],
+    "96": [
+      "unsupported_pricing_factors"
+    ],
+    "97": [
+      "unsupported_coverage"
+    ],
+    "98": [
+      "duplicate_correction_prompt"
+    ],
+    "99": [
+      "asks_for_unavailable_order"
+    ]
+  }
+}

@@ -86,7 +86,7 @@ handleFlowInput=async function(text){
   const t=text.trim();
 
   if(kateFlow.step==='review'){
-    if(/^(yes|yes correct|yes that's correct|yes that is correct|correct|that's correct|that is correct|looks good|confirm|confirmed|yep|yeah)\.?$/i.test(t)){
+    if(isKateApproval(t)){
       kateFlow.reviewReady=false;
       await saveCustomerUpdate();
       return true;
