@@ -7,6 +7,7 @@ const send=async p=>{const r=await handler(new Request('https://test',{method:'P
 (async()=>{
  let r=await send({...payload,consent:false});assert.equal(r.status,400);assert.equal(calls.length,0);
  r=await send({...payload,changes:{status:'Delivered'}});assert.equal(r.status,400);assert.equal(calls.length,0);
+ r=await send({...payload,changes:{phone:'Did you send email?'}});assert.equal(r.status,400);assert.equal(calls.length,0);
  status=403;r=await send(payload);assert.equal(r.status,403);assert.equal(calls.length,1);assert.ok(!calls.some(c=>c.url.includes('/rest/')));
  status=200;r=await send(payload);assert.equal(r.status,200);assert.equal(r.body.ok,true);assert.deepEqual(calls.at(-1).body,{order_number:'TEST12345',last_name:'TEST',status:'submitted',gate_code:'NEW123',delivery_instructions:'Reception closes at 6'});assert.ok(!('confirmed_address' in calls.at(-1).body));assert.ok(!('confirmed_phone' in calls.at(-1).body));
  r=await send({...payload,changes:{gate:''}});assert.equal(r.status,200);assert.equal(calls.at(-1).body.gate_code,'');

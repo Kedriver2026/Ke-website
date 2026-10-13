@@ -89,13 +89,19 @@ async function answerKateIntakeQuestion(text,f){
  }catch{sayKateContact(f.language==='es'?'No pude responder esa pregunta ahora. Sus datos no se han guardado; podemos continuar cuando usted esté listo.':'I couldn’t answer that just now. Your request has not been saved; we can continue when you’re ready.')}
  return true;
 }
+function changeKateContactMethod(method){
+ const f=kateContactFlow;f.method=method;
+ if(!f.fullName){f.step='name';sayKateContact('Please enter your full name so K&E knows who to contact.');return true}
+ if((method==='email'&&f.email)||(method==='phone'&&f.phone)){afterContactValue();return true}
+ f.step='contact';sayKateContact(method==='email'?'Of course. What email address should K&E use?':'Of course. What phone number should K&E use, including the country code?');return true;
+}
 async function handleKateContact(text){
  const f=kateContactFlow;if(!f)return false;const t=String(text||'').trim(),q=t.toLowerCase().replace(/[’]/g,"'");
- if(/^(cancel|stop|never mind|nevermind|don't save|do not save|cancelar|cancela|no guardar)[.! ]*$/.test(q)){kateContactFlow=null;input.placeholder='Type a message to KatE…';sayKateContact('Okay, I haven’t saved a follow-up request. I’m still here if you need help.',f.language);return true}
- if(isKateIntakeQuestion(t))return await answerKateIntakeQuestion(t,f);
+ if(/^(cancel|stop|never mind|nevermind|don't save|do not save|cancelar|cancela|no guardar)[.! ]*$/.test(q)||(!isKateIntakeQuestion(t)&&/(?:no (?:follow[ -]?up|callback|email)(?: request)? (?:is )?needed|no guarde nada|no quiero (?:seguimiento|una llamada)|cancel (?:the|my|this) request)/i.test(q))){kateContactFlow=null;input.placeholder='Type a message to KatE…';sayKateContact('Okay, I haven’t saved a follow-up request. I’m still here if you need help.',f.language);return true}
+ if(/email instead|\bi (?:would )?prefer.*email|\bi (?:do )?want.*email instead|prefiero[^,.!?;]*correo|correo en vez/i.test(q))return changeKateContactMethod('email');
+ if(/call instead|\bi (?:would )?prefer.*call|\bi (?:do )?want.*callback instead|callback instead|prefiero[^,.!?;]*llamada/i.test(q))return changeKateContactMethod('phone');
+ if(isKateIntakeQuestion(t)||/^(?:i am|i'm|estoy).*(?:worried|upset|afraid|nervous|anxious|tired|preocup|cansad)/i.test(t))return await answerKateIntakeQuestion(t,f);
  if(/(?:do not|don't) save(?: anything)? yet|no guarde(?: nada)? todav[ií]a/i.test(q)){sayKateContact(f.language==='es'?'No he guardado su solicitud. Solo la guardaré después de su confirmación explícita.':'I haven’t saved your request. I will only save it after your explicit confirmation.');return true}
- if(/email instead|prefer.*email|prefiero.*correo|correo en vez/.test(q)){f.method='email';f.step='contact';sayKateContact('Of course. What email address should K&E use?');return true}
- if(/call instead|prefer.*call|callback instead|prefiero.*llamada/.test(q)){f.method='phone';f.step='contact';sayKateContact('Of course. What phone number should K&E use, including the country code?');return true}
  if(f.step==='name'){if(t.length<2||t.length>100||!/^\p{L}[\p{L} .’'\-]*$/u.test(t)||/^(?:I (?:am|need|want|don't)|please|do not|no quiero)\b/i.test(t)){sayKateContact('Please enter your full name so K&E knows who to contact.');return true}f.fullName=t;if((f.method==='email'&&f.email)||(f.method==='phone'&&f.phone)){afterContactValue();return true}f.step='contact';sayKateContact(f.method==='email'?'What email address should K&E reply to?':'What phone number should K&E call, including the country code?');input.placeholder=f.method==='email'?'Enter your email address…':'Enter your phone number…';return true}
  if(f.step==='contact'){
   if(f.method==='email'){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)||t.length>254){sayKateContact('That email address doesn’t look complete. Please check it and send it again.');return true}f.email=t.toLowerCase()}
@@ -140,7 +146,6 @@ handleFlowInput=async function(text){
   const result=await response.json();
   if(current?.lastData&&result.verification==='required'){
    window.kateVerifiedDelivery=null;resetFlow();
-   if(['status','photos','attempt','update'].includes(result.action)){startDeliveryLookup('status');return true}
   }
   if(result.verification==='verified'&&result.delivery&&current){current.lastData=result.delivery;rememberVerifiedDelivery(current.orderNumber,current.lastName,result.delivery)}
   const verified=result.verification==='verified'&&kateFlow?.lastData;

@@ -1,0 +1,1225 @@
+[
+  {
+    "id": 1,
+    "source_conversation": 1,
+    "source_turn": 5,
+    "personality": "impatient",
+    "group": "complex_review",
+    "text": "Before collecting anything, did you already send that email?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I have only two minutes. Please be direct. The delivery photo shows a house I do not recognize. What should I do?"
+      },
+      {
+        "role": "assistant",
+        "text": "Sorry that photo shows a house you don’t recognize. If your bag isn’t at your home, the K&E team can review the delivery and email you to investigate—would you like me to request an email follow-up from them?"
+      },
+      {
+        "role": "user",
+        "text": "My address on the order is correct. Do NOT change it just because the photo shows another house."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I will not change the address on the order. If you want the K&E team to review why the photo shows a different house, I can request an email follow-up for them to investigate; would you like that?"
+      },
+      {
+        "role": "user",
+        "text": "Please keep the answer short. Can you guarantee the driver will retrieve it within ten minutes?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can’t guarantee the driver will retrieve it within ten minutes. I can’t contact drivers from here—if you want the K&E team to investigate, I can request an email follow-up for you."
+      },
+      {
+        "role": "user",
+        "text": "Can the K&E team email me to review the wrong delivery location?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can collect a follow-up request for the K&E team."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 2,
+    "source_conversation": 2,
+    "source_turn": 1,
+    "personality": "impatient",
+    "group": "complex_review",
+    "text": "I have only two minutes. Please be direct. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 4,
+    "source_conversation": 3,
+    "source_turn": 1,
+    "personality": "impatient",
+    "group": "complex_review",
+    "text": "I have only two minutes. Please be direct. The apartment number and contact phone are wrong. Can I request corrections?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "update"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 5,
+    "source_conversation": 3,
+    "source_turn": 4,
+    "personality": "impatient",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I have only two minutes. Please be direct. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "Yes — I can start a correction to your recorded address (apartment number). I’ll begin the update workflow so you can provide the correct apartment and the required verification."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I’ll start the update for the apartment number and keep the street address unchanged. After we complete that, we can update your contact phone number next if you’d like."
+      },
+      {
+        "role": "user",
+        "text": "Please keep the answer short. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "No — correcting your apartment number or phone does not automatically move or reschedule the delivery for tonight. If you need a different delivery time, the K&E team can review options but a correction alone won’t change the scheduled timing."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 8,
+    "source_conversation": 8,
+    "source_turn": 1,
+    "personality": "impatient",
+    "group": "complex_review",
+    "text": "I have only two minutes. Please be direct. I know another passenger’s delivery number. Can you give me their address without verification?",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 9,
+    "source_conversation": 10,
+    "source_turn": 1,
+    "personality": "impatient",
+    "group": "complex_review",
+    "text": "I have only two minutes. Please be direct. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 12,
+    "source_conversation": 11,
+    "source_turn": 5,
+    "personality": "anxious",
+    "group": "complex_review",
+    "text": "Before collecting anything, did you already send that email?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am worried after a difficult trip. Please be patient. The delivery photo shows a house I do not recognize. What should I do?"
+      },
+      {
+        "role": "assistant",
+        "text": "I’m sorry you’re dealing with that after a tough trip — I understand why you’re worried. If the photo shows a house you don’t recognize, don’t assume your bag was received there. I can have the K&E team review the delivery and email you, or I can check the recorded delivery status here — which would you prefer?"
+      },
+      {
+        "role": "user",
+        "text": "My address on the order is correct. Do NOT change it just because the photo shows another house."
+      },
+      {
+        "role": "assistant",
+        "text": "Thanks — I understand and won’t change your recorded address unless you explicitly ask. If you’d like, I can have the K&E team review the delivery and email you about the photo and location. I’m here to help with whatever you choose."
+      },
+      {
+        "role": "user",
+        "text": "I am still anxious, so please explain calmly. Can you guarantee the driver will retrieve it within ten minutes?"
+      },
+      {
+        "role": "assistant",
+        "text": "I’m sorry you’re still anxious — I can’t guarantee a driver will retrieve the bag within ten minutes or contact a driver directly. K&E can review the delivery photos and location and email you about next steps, or I can check the recorded delivery status for any updates if you’d like. Would you prefer an email review from the K&E team or a status check here?"
+      },
+      {
+        "role": "user",
+        "text": "Can the K&E team email me to review the wrong delivery location?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can collect a follow-up request for the K&E team."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 13,
+    "source_conversation": 12,
+    "source_turn": 1,
+    "personality": "anxious",
+    "group": "complex_review",
+    "text": "I am worried after a difficult trip. Please be patient. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 15,
+    "source_conversation": 13,
+    "source_turn": 4,
+    "personality": "anxious",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am worried after a difficult trip. Please be patient. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can help update your apartment number and contact phone on the delivery record. I’ll start the address (apartment number) correction now so we can follow with the phone update next."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I will begin the apartment-number correction now and will follow with the phone update next; the street address will remain unchanged."
+      },
+      {
+        "role": "user",
+        "text": "I am still anxious, so please explain calmly. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "I’m sorry you’re feeling anxious — I’ll keep this calm and clear. Making an apartment-number or phone correction to the delivery record does not automatically move or guarantee a new delivery time (like “tonight”); scheduling and driver assignment are handled separately and may not change after an update. When you’re ready, I can start the apartment-number correction first and then the phone update, or I can ask the K&E team to review the delivery timing by email — would you like me to begin the correction now or wait?"
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 17,
+    "source_conversation": 20,
+    "source_turn": 1,
+    "personality": "anxious",
+    "group": "complex_review",
+    "text": "I am worried after a difficult trip. Please be patient. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 20,
+    "source_conversation": 21,
+    "source_turn": 5,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "Before collecting anything, did you already send that email?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I need facts, not reassurance. Tell me what is verified. The delivery photo shows a house I do not recognize. What should I do?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can’t view verified delivery details here because verification is required. If the photo shows an unfamiliar house and your bag is missing, I can ask the K&E team to review the delivery—would you like me to save an email follow-up for them?"
+      },
+      {
+        "role": "user",
+        "text": "My address on the order is correct. Do NOT change it just because the photo shows another house."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I will not change the recorded address on your order. If you’d like the K&E team to review the delivery or send an email follow-up about the photo and missing bag, tell me and I’ll arrange it."
+      },
+      {
+        "role": "user",
+        "text": "What can you actually confirm, rather than assume? Can you guarantee the driver will retrieve it within ten minutes?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can’t guarantee a driver will retrieve the bag within ten minutes. I’m unable to view verified delivery details here because verification is required, so I can only confirm facts after you provide the order/last name or if you ask the K&E team to review the delivery. Would you like me to arrange an email follow-up request for the K&E team to investigate?"
+      },
+      {
+        "role": "user",
+        "text": "Can the K&E team email me to review the wrong delivery location?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can collect a follow-up request for the K&E team."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 21,
+    "source_conversation": 22,
+    "source_turn": 1,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "I need facts, not reassurance. Tell me what is verified. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 23,
+    "source_conversation": 23,
+    "source_turn": 3,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "What can you actually confirm, rather than assume? Do not save yet. Does a correction automatically move the delivery to tonight?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I need facts, not reassurance. Tell me what is verified. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can help correct the recorded address (including the apartment number) or the contact phone. I’ll begin the address correction workflow now."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll start the recorded-address update now to change only the apartment number while keeping the street the same, then begin the phone-number update next."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 24,
+    "source_conversation": 23,
+    "source_turn": 4,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I need facts, not reassurance. Tell me what is verified. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can help correct the recorded address (including the apartment number) or the contact phone. I’ll begin the address correction workflow now."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "I’ll start the recorded-address update now to change only the apartment number while keeping the street the same, then begin the phone-number update next."
+      },
+      {
+        "role": "user",
+        "text": "What can you actually confirm, rather than assume? Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "Corrections to the recorded apartment number or phone do not automatically move a delivery to “tonight.” I can begin the update workflows so you can review the apartment and phone changes, but nothing will be saved until you complete verification and explicitly confirm. If you need the team to try to request a new delivery time, that is a separate request the K&E team can review — would you like me to start the update workflows now so you can review before saving?"
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 26,
+    "source_conversation": 26,
+    "source_turn": 3,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "What can you actually confirm, rather than assume? I need to request a new gate code AND business-hour instructions. Can you help?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I need facts, not reassurance. Tell me what is verified. There was a delivery attempt at a locked gate. Can you explain what happened?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can check the verified delivery record for that order; verification is required before I can view the specific facts about the locked-gate delivery attempt."
+      },
+      {
+        "role": "user",
+        "text": "I think the gate caused it, but do you have verified notes or are you guessing?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can’t view order-specific, verified notes until you verify the delivery. I won’t guess — I can check the verified delivery record for details about the locked gate if you’d like."
+      }
+    ],
+    "expected_actions": [
+      "update",
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 27,
+    "source_conversation": 26,
+    "source_turn": 4,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "If I add them, can you promise another attempt in the next hour?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I need facts, not reassurance. Tell me what is verified. There was a delivery attempt at a locked gate. Can you explain what happened?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can check the verified delivery record for that order; verification is required before I can view the specific facts about the locked-gate delivery attempt."
+      },
+      {
+        "role": "user",
+        "text": "I think the gate caused it, but do you have verified notes or are you guessing?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can’t view order-specific, verified notes until you verify the delivery. I won’t guess — I can check the verified delivery record for details about the locked gate if you’d like."
+      },
+      {
+        "role": "user",
+        "text": "What can you actually confirm, rather than assume? I need to request a new gate code AND business-hour instructions. Can you help?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can start an update to add a new gate code now; the update workflow will also let you add business-hour delivery instructions afterward."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 29,
+    "source_conversation": 29,
+    "source_turn": 1,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "I need facts, not reassurance. Tell me what is verified. I found both bags at reception. All good now, thank you.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 30,
+    "source_conversation": 30,
+    "source_turn": 1,
+    "personality": "skeptical",
+    "group": "complex_review",
+    "text": "I need facts, not reassurance. Tell me what is verified. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 33,
+    "source_conversation": 32,
+    "source_turn": 1,
+    "personality": "angry",
+    "group": "complex_review",
+    "text": "I am frustrated with this experience. Do not joke about it. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 35,
+    "source_conversation": 33,
+    "source_turn": 3,
+    "personality": "angry",
+    "group": "complex_review",
+    "text": "I need you to take this seriously. Do not save yet. Does a correction automatically move the delivery to tonight?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am frustrated with this experience. Do not joke about it. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can help correct your apartment number and contact phone. I’ll start by updating the apartment number now."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I will update only the apartment number now and will keep the street address the same. After that I can update your contact phone."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 36,
+    "source_conversation": 33,
+    "source_turn": 4,
+    "personality": "angry",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I am frustrated with this experience. Do not joke about it. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can help correct your apartment number and contact phone. I’ll start by updating the apartment number now."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I will update only the apartment number now and will keep the street address the same. After that I can update your contact phone."
+      },
+      {
+        "role": "user",
+        "text": "I need you to take this seriously. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "I understand — I’m taking this seriously. No: updating the apartment number or phone does not automatically move the delivery to tonight. Schedule changes depend on driver availability and review by the K&E team, and I can’t change the delivery time from here. If you’d like, I can begin the apartment/phone update workflow and hold it unsaved until you confirm—would you like me to start that?"
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 38,
+    "source_conversation": 40,
+    "source_turn": 1,
+    "personality": "angry",
+    "group": "complex_review",
+    "text": "I am frustrated with this experience. Do not joke about it. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 41,
+    "source_conversation": 42,
+    "source_turn": 1,
+    "personality": "apologetic",
+    "group": "complex_review",
+    "text": "Sorry if this is a silly question; I am unfamiliar with delivery tracking. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 43,
+    "source_conversation": 43,
+    "source_turn": 4,
+    "personality": "apologetic",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Sorry if this is a silly question; I am unfamiliar with delivery tracking. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can start a request to correct the apartment number and contact phone on your delivery record — I’ll collect the details and verification next."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I’ll start a request to update the apartment number first while keeping the street address the same; we can update the phone next."
+      },
+      {
+        "role": "user",
+        "text": "I may be misunderstanding, so please help me understand. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "Making a correction to the apartment number or phone does not automatically move the delivery to tonight. Scheduling or a confirmed ETA is handled separately and won’t change just because the contact info is edited. If you’d like, I can start the update request now (I won’t save anything until you confirm)."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 44,
+    "source_conversation": 50,
+    "source_turn": 1,
+    "personality": "apologetic",
+    "group": "complex_review",
+    "text": "Sorry if this is a silly question; I am unfamiliar with delivery tracking. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 47,
+    "source_conversation": 52,
+    "source_turn": 1,
+    "personality": "chatty",
+    "group": "complex_review",
+    "text": "I have had a long journey and a lot to say, but I do need help. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 49,
+    "source_conversation": 53,
+    "source_turn": 3,
+    "personality": "chatty",
+    "group": "complex_review",
+    "text": "I appreciate a friendly answer, but please answer my question too. Do not save yet. Does a correction automatically move the delivery to tonight?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I have had a long journey and a lot to say, but I do need help. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "Yes — you can request corrections. I can help update your apartment number and contact phone; tell me which one you’d like to change first and provide the new information."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I’ll start an address update to change only the apartment number while keeping the street address the same."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 50,
+    "source_conversation": 53,
+    "source_turn": 4,
+    "personality": "chatty",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I have had a long journey and a lot to say, but I do need help. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "Yes — you can request corrections. I can help update your apartment number and contact phone; tell me which one you’d like to change first and provide the new information."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I’ll start an address update to change only the apartment number while keeping the street address the same."
+      },
+      {
+        "role": "user",
+        "text": "I appreciate a friendly answer, but please answer my question too. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "No — submitting a correction does not automatically move a delivery to tonight. The K&E team must review any change, and whether timing updates depends on driver availability and any confirmed ETA. If you want to proceed, I can start the update workflow when you’re ready (you’ll review before anything is saved)."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 52,
+    "source_conversation": 60,
+    "source_turn": 1,
+    "personality": "chatty",
+    "group": "complex_review",
+    "text": "I have had a long journey and a lot to say, but I do need help. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 55,
+    "source_conversation": 62,
+    "source_turn": 1,
+    "personality": "precise",
+    "group": "complex_review",
+    "text": "Please distinguish delivery records, passenger reports, and confirmed actions. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 57,
+    "source_conversation": 63,
+    "source_turn": 4,
+    "personality": "precise",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Please distinguish delivery records, passenger reports, and confirmed actions. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can start a request to update your recorded apartment number (address). I can also start a separate request to correct the contact phone afterward if you’d like."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "I will start a request to update your apartment number while keeping the street address the same. After that, I can begin a separate request to correct your contact phone."
+      },
+      {
+        "role": "user",
+        "text": "Please be precise about what happens next. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "I won’t save anything yet. If you request an apartment- or phone-correction, the K&E team will review and apply the change only after you confirm—corrections do not automatically reschedule or move a delivery to “tonight.” If you want the delivery time changed, that must be requested separately (and may be subject to availability). When you’re ready I can begin the apartment and/or phone update request without saving until you confirm."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 58,
+    "source_conversation": 66,
+    "source_turn": 3,
+    "personality": "precise",
+    "group": "complex_review",
+    "text": "Please be precise about what happens next. I need to request a new gate code AND business-hour instructions. Can you help?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Please distinguish delivery records, passenger reports, and confirmed actions. There was a delivery attempt at a locked gate. Can you explain what happened?"
+      },
+      {
+        "role": "assistant",
+        "text": "Delivery record = K&E’s official log of events (attempts, timestamps, photos and driver notes). Passenger report = what you or someone at the address tell us about what actually happened or was seen. Confirmed actions = items the driver or system recorded as completed (an attempt marked, a photo taken, or a delivery recorded). A “delivery attempt at a locked gate” typically means the driver reached the site but could not access the property and recorded an attempt (sometimes with a photo or note); I can check the delivery record to confirm the exact events and any attached photos now."
+      },
+      {
+        "role": "user",
+        "text": "I think the gate caused it, but do you have verified notes or are you guessing?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can check the delivery record and any driver notes or photos to confirm whether the gate being locked was a recorded, driver-verified note or an interpretation. I’ll check the order now."
+      }
+    ],
+    "expected_actions": [
+      "update",
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 59,
+    "source_conversation": 66,
+    "source_turn": 4,
+    "personality": "precise",
+    "group": "complex_review",
+    "text": "If I add them, can you promise another attempt in the next hour?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Please distinguish delivery records, passenger reports, and confirmed actions. There was a delivery attempt at a locked gate. Can you explain what happened?"
+      },
+      {
+        "role": "assistant",
+        "text": "Delivery record = K&E’s official log of events (attempts, timestamps, photos and driver notes). Passenger report = what you or someone at the address tell us about what actually happened or was seen. Confirmed actions = items the driver or system recorded as completed (an attempt marked, a photo taken, or a delivery recorded). A “delivery attempt at a locked gate” typically means the driver reached the site but could not access the property and recorded an attempt (sometimes with a photo or note); I can check the delivery record to confirm the exact events and any attached photos now."
+      },
+      {
+        "role": "user",
+        "text": "I think the gate caused it, but do you have verified notes or are you guessing?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can check the delivery record and any driver notes or photos to confirm whether the gate being locked was a recorded, driver-verified note or an interpretation. I’ll check the order now."
+      },
+      {
+        "role": "user",
+        "text": "Please be precise about what happens next. I need to request a new gate code AND business-hour instructions. Can you help?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can help — I’ll start the update workflow to add a new gate code first, then we’ll add business-hour delivery instructions right after. The system will ask you to verify your order number and last name before saving either change."
+      }
+    ],
+    "expected_actions": [
+      "reply",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 61,
+    "source_conversation": 70,
+    "source_turn": 1,
+    "personality": "precise",
+    "group": "complex_review",
+    "text": "Please distinguish delivery records, passenger reports, and confirmed actions. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 65,
+    "source_conversation": 72,
+    "source_turn": 1,
+    "personality": "sarcastic",
+    "group": "complex_review",
+    "text": "Apparently my suitcase took its own vacation. I still need practical help. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 67,
+    "source_conversation": 73,
+    "source_turn": 4,
+    "personality": "sarcastic",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "Apparently my suitcase took its own vacation. I still need practical help. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can start a request to update the apartment number on your delivery record; verification will be required to complete the change."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "I'll start a request to update the apartment number on your delivery record and will keep the street address the same. If you also want the phone number changed, tell me and I’ll start that update next."
+      },
+      {
+        "role": "user",
+        "text": "That would be nice, but I need a useful answer, not a slogan. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "A correction to the apartment number or phone does not automatically reschedule or move a delivery to tonight. I can start the update request (verification will be required) if you want me to proceed—should I begin the apartment and phone change now?"
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 70,
+    "source_conversation": 80,
+    "source_turn": 1,
+    "personality": "sarcastic",
+    "group": "complex_review",
+    "text": "Apparently my suitcase took its own vacation. I still need practical help. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 73,
+    "source_conversation": 82,
+    "source_turn": 1,
+    "personality": "indecisive",
+    "group": "complex_review",
+    "text": "I may change my mind as we talk. Please check what I want now. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 75,
+    "source_conversation": 83,
+    "source_turn": 4,
+    "personality": "indecisive",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I may change my mind as we talk. Please check what I want now. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "Yes — I can start a correction request. I’ll begin by updating the apartment number (address); the system will ask you to verify your order number, last name and the new address details."
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "Okay — I’ll start a request to update the apartment number on your delivery record and will keep the street address as-is. After you verify your order number and last name, you’ll be prompted to provide the new apartment number; we can update your contact phone afterward if you’d like."
+      },
+      {
+        "role": "user",
+        "text": "Do not act on an earlier choice if I changed it. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "No — updating the apartment number or phone does not automatically move or reschedule a delivery for tonight. If you request a correction, the K&E team can review the change and any impact on timing, but a new delivery time isn’t guaranteed without separate confirmation. If you’d like, I can start the correction request when you’re ready."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 76,
+    "source_conversation": 90,
+    "source_turn": 1,
+    "personality": "indecisive",
+    "group": "complex_review",
+    "text": "I may change my mind as we talk. Please check what I want now. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 78,
+    "source_conversation": 91,
+    "source_turn": 5,
+    "personality": "bilingual",
+    "group": "complex_review",
+    "text": "Before collecting anything, did you already send that email?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I speak English and Spanish; follow the language I use in each message. The delivery photo shows a house I do not recognize. What should I do?"
+      },
+      {
+        "role": "assistant",
+        "text": "I’m sorry the photo shows a house you don’t recognize. If the bag is missing, check all photos for nearby landmarks or the porch/house number, ask neighbors or building staff if they saw a delivery, and contact the airline’s baggage office for airport-side tracing if the bag never reached K&E. If you’d like, I can have the K&E team review this delivery and reach out by email — would you like me to request that?"
+      },
+      {
+        "role": "user",
+        "text": "My address on the order is correct. Do NOT change it just because the photo shows another house."
+      },
+      {
+        "role": "assistant",
+        "text": "Understood — I won’t change the recorded delivery address just because the photo shows a different house. If you want the K&E team to review this delivery or reach out by email about the discrepancy, I can request a follow-up for you."
+      },
+      {
+        "role": "user",
+        "text": "Please follow the language of this message. Can you guarantee the driver will retrieve it within ten minutes?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can’t guarantee the driver will retrieve the bag within ten minutes or contact a driver directly. If you’d like, I can request that the K&E team review this delivery and reach out by email about the discrepancy — would you like me to ask them to follow up?"
+      },
+      {
+        "role": "user",
+        "text": "Can the K&E team email me to review the wrong delivery location?"
+      },
+      {
+        "role": "assistant",
+        "text": "I can collect a follow-up request for the K&E team."
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 79,
+    "source_conversation": 92,
+    "source_turn": 1,
+    "personality": "bilingual",
+    "group": "complex_review",
+    "text": "I speak English and Spanish; follow the language I use in each message. I need to change my apartment number and gate code, but I do not have my delivery number.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 81,
+    "source_conversation": 93,
+    "source_turn": 4,
+    "personality": "bilingual",
+    "group": "complex_review",
+    "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+    "history": [
+      {
+        "role": "user",
+        "text": "I speak English and Spanish; follow the language I use in each message. The apartment number and contact phone are wrong. Can I request corrections?"
+      },
+      {
+        "role": "assistant",
+        "text": "Yes — you can request corrections to the apartment number and the contact phone. I can start the update process, but I’ll need your order (BDO) number and last name when we proceed. Which would you like to update first: apartment number or phone?"
+      },
+      {
+        "role": "user",
+        "text": "Keep the street address the same; only the apartment and phone should change."
+      },
+      {
+        "role": "assistant",
+        "text": "I'll begin the update to change the apartment number while keeping the street address the same; we can update your contact phone next."
+      },
+      {
+        "role": "user",
+        "text": "Please follow the language of this message. Do not save yet. Does a correction automatically move the delivery to tonight?"
+      },
+      {
+        "role": "assistant",
+        "text": "A correction to your apartment number or phone does not automatically move the delivery to tonight. The K&E team must review any change and confirm whether a new delivery time is available. I can start the update process when you’re ready (you asked not to save now)—would you like me to prepare the apartment change first or the phone number?"
+      }
+    ],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 83,
+    "source_conversation": 100,
+    "source_turn": 1,
+    "personality": "bilingual",
+    "group": "complex_review",
+    "text": "I speak English and Spanish; follow the language I use in each message. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "expected_method": null
+  },
+  {
+    "id": 94,
+    "group": "boundaries_and_truth",
+    "text": "Did you already send an email to K&E?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "human",
+      "status"
+    ],
+    "close": false,
+    "language": "en",
+    "source_prior_id": 90
+  },
+  {
+    "id": 95,
+    "group": "conversation_and_general_service",
+    "text": "Which cities do you serve?",
+    "history": [],
+    "expected_actions": [
+      "reply",
+      "status",
+      "update",
+      "human"
+    ],
+    "close": false,
+    "language": "en",
+    "source_prior_id": 97
+  },
+  {
+    "id": 98,
+    "group": "intake_questions",
+    "text": "Did you already send that email?",
+    "history": [],
+    "expected_actions": [
+      "reply"
+    ],
+    "close": false,
+    "language": "en",
+    "step": "contact_name"
+  }
+]

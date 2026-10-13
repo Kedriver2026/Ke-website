@@ -17,7 +17,7 @@ async function saveDeliveryCorrection(p:any){
  const orderNumber=String(p.orderNumber||'').trim().toUpperCase(),lastName=String(p.lastName||'').trim().toUpperCase();
  const columns:Record<string,string>={address:'confirmed_address',phone:'confirmed_phone',instructions:'delivery_instructions',gate:'gate_code'};
  const entries=Object.entries(p.changes||{});
- if(p.consent!==true||!/^[A-Z0-9]{6,30}$/.test(orderNumber)||!/^[A-Z' -]{2,60}$/.test(lastName)||!entries.length||entries.some(([field,value])=>!columns[field]||typeof value!=='string'||value.length>500||(['address','phone'].includes(field)&&!value.trim())))return reply({error:'invalid_correction'},400);
+ if(p.consent!==true||!/^[A-Z0-9]{6,30}$/.test(orderNumber)||!/^[A-Z' -]{2,60}$/.test(lastName)||!entries.length||entries.some(([field,value])=>!columns[field]||typeof value!=='string'||value.length>500||(['address','phone'].includes(field)&&!value.trim())||(field==='phone'&&!/^[+()\d\s.-]{7,40}$/.test(value))))return reply({error:'invalid_correction'},400);
  const url=Deno.env.get('SUPABASE_URL'),key=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');if(!url||!key)return reply({error:'service_unavailable'},503);
  const check=await fetch(`${url}/functions/v1/kate-dart-status`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderNumber,lastName,requestType:'status'}),signal:AbortSignal.timeout(15000)});
  if(!check.ok)return reply({error:'verification_required'},[401,403,404].includes(check.status)?403:503);

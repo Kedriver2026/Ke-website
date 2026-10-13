@@ -1,0 +1,299 @@
+[
+  {
+    "id": 1,
+    "personality": "impatient",
+    "journey": "wrong_location",
+    "turns": [
+      {
+        "text": "I have only two minutes. Please be direct. The delivery photo shows a house I do not recognize. What should I do?",
+        "expected_actions": [
+          "reply",
+          "status",
+          "photos"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "My address on the order is correct. Do NOT change it just because the photo shows another house.",
+        "expected_actions": [
+          "reply",
+          "status"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "Please keep the answer short. Can you guarantee the driver will retrieve it within ten minutes?",
+        "expected_actions": [
+          "reply",
+          "status"
+        ],
+        "language": "en",
+        "no_guarantee": true
+      },
+      {
+        "text": "Can the K&E team email me to review the wrong delivery location?",
+        "expected_actions": [
+          "human"
+        ],
+        "language": "en",
+        "method": "email"
+      },
+      {
+        "text": "Before collecting anything, did you already send that email?",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "no_completion_claim": true
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "personality": "impatient",
+    "journey": "ambiguous_and_changed_preferences",
+    "turns": [
+      {
+        "text": "I have only two minutes. Please be direct. I have a question, but I am not asking for tracking yet. Please do not guess my task.",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "Can the team contact me? I would prefer a written email record.",
+        "expected_actions": [
+          "human"
+        ],
+        "language": "en",
+        "method": "email"
+      },
+      {
+        "text": "Please keep the answer short. Do not call me. Is collecting my details the same as sending an email?",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "no_completion_claim": true
+      },
+      {
+        "text": "Wait, I changed my mind: I DO want a callback instead of email.",
+        "expected_actions": [
+          "human",
+          "reply"
+        ],
+        "language": "en",
+        "method": "phone"
+      },
+      {
+        "text": "No. I mean I still need help, not that I am finished. Please explain my options.",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "not_close": true
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "personality": "skeptical",
+    "journey": "language_switch",
+    "turns": [
+      {
+        "text": "I need facts, not reassurance. Tell me what is verified. Can you show all delivery photos, including earlier attempts?",
+        "expected_actions": [
+          "photos",
+          "attempt"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "No tengo el número de entrega. ¿Cómo puedo conseguir ayuda?",
+        "expected_actions": [
+          "reply",
+          "human"
+        ],
+        "language": "es",
+        "no_order_repeat": true
+      },
+      {
+        "text": "What can you actually confirm, rather than assume? Please answer in English now. Can someone follow up by email?",
+        "expected_actions": [
+          "human"
+        ],
+        "language": "en",
+        "method": "email"
+      },
+      {
+        "text": "Prefiero una llamada, no correo electrónico. ¿Puede recopilar una solicitud?",
+        "expected_actions": [
+          "human"
+        ],
+        "language": "es",
+        "method": "phone"
+      },
+      {
+        "text": "Gracias, cambié de opinión. No guarde nada; eso es todo.",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "es",
+        "close": true,
+        "no_completion_claim": true
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "personality": "angry",
+    "journey": "conflicting_updates",
+    "turns": [
+      {
+        "text": "I am frustrated with this experience. Do not joke about it. The apartment number and contact phone are wrong. Can I request corrections?",
+        "expected_actions": [
+          "reply",
+          "update"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "Keep the street address the same; only the apartment and phone should change.",
+        "expected_actions": [
+          "reply",
+          "update"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "I need you to take this seriously. Do not save yet. Does a correction automatically move the delivery to tonight?",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "no_guarantee": true,
+        "no_completion_claim": true
+      },
+      {
+        "text": "My bag may already be marked delivered. Would changing details now move the bag?",
+        "expected_actions": [
+          "reply",
+          "status"
+        ],
+        "language": "en",
+        "no_guarantee": true
+      },
+      {
+        "text": "Thanks, I understand the difference. Do not start anything else.",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "close": true
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "personality": "sarcastic",
+    "journey": "attempt_and_access",
+    "turns": [
+      {
+        "text": "Apparently my suitcase took its own vacation. I still need practical help. There was a delivery attempt at a locked gate. Can you explain what happened?",
+        "expected_actions": [
+          "reply",
+          "attempt",
+          "status"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "I think the gate caused it, but do you have verified notes or are you guessing?",
+        "expected_actions": [
+          "reply",
+          "attempt",
+          "status"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "That would be nice, but I need a useful answer, not a slogan. I need to request a new gate code AND business-hour instructions. Can you help?",
+        "expected_actions": [
+          "update",
+          "reply"
+        ],
+        "language": "en"
+      },
+      {
+        "text": "If I add them, can you promise another attempt in the next hour?",
+        "expected_actions": [
+          "reply",
+          "status"
+        ],
+        "language": "en",
+        "no_guarantee": true
+      },
+      {
+        "text": "Please have K&E call me about access. I specifically prefer a callback.",
+        "expected_actions": [
+          "human"
+        ],
+        "language": "en",
+        "method": "phone"
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "personality": "bilingual",
+    "journey": "urgent_without_promises",
+    "turns": [
+      {
+        "text": "I speak English and Spanish; follow the language I use in each message. My delivered bag is missing and contains items I urgently need. Please take this seriously.",
+        "expected_actions": [
+          "reply",
+          "status",
+          "photos"
+        ],
+        "language": "en",
+        "serious": true
+      },
+      {
+        "text": "Can you personally call the driver and tell me you did it?",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "no_completion_claim": true,
+        "serious": true
+      },
+      {
+        "text": "Please follow the language of this message. Do not promise a response time you cannot verify. What help is available?",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "no_guarantee": true,
+        "serious": true
+      },
+      {
+        "text": "Yes, please collect an email follow-up request for K&E.",
+        "expected_actions": [
+          "human"
+        ],
+        "language": "en",
+        "method": "email",
+        "serious": true
+      },
+      {
+        "text": "If no one answers immediately, does that mean you actually sent an email?",
+        "expected_actions": [
+          "reply"
+        ],
+        "language": "en",
+        "no_completion_claim": true,
+        "serious": true
+      }
+    ]
+  }
+]

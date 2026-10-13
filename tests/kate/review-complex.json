@@ -1,0 +1,338 @@
+{
+  "reviewed_on": "2026-10-13",
+  "baseline_run": 38411875866,
+  "baseline_commit": "e2fb6f71b6405a808110de80e2f14941ea0c4f84",
+  "baseline_backend_version": 19,
+  "reviewed_full_conversations": 100,
+  "reviewed_full_turns": 500,
+  "successful_api_responses": 500,
+  "screen_flagged_conversations": 32,
+  "screen_flagged_turns": 36,
+  "scope": "Conversation engine using actual earlier replies. No real order verification, frontend input execution or contact/email/call operations. Mocked workflows separately tested. Execution success and screen flags are not a quality pass rate.",
+  "flag_review": [
+    {
+      "conversation": 3,
+      "turn": 1,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 5,
+      "turn": 4,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 7,
+      "turn": 2,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 8,
+      "turn": 1,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 10,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 17,
+      "turn": 5,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 20,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 23,
+      "turn": 3,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 23,
+      "turn": 4,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 24,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 26,
+      "turn": 3,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 26,
+      "turn": 4,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 28,
+      "turn": 5,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 29,
+      "turn": 1,
+      "screening_flags": [
+        "intent",
+        "reopens_closing"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 30,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 33,
+      "turn": 3,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 37,
+      "turn": 5,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 40,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 50,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 52,
+      "turn": 1,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 53,
+      "turn": 3,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 57,
+      "turn": 5,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 60,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 66,
+      "turn": 3,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 66,
+      "turn": 4,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 67,
+      "turn": 5,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 70,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 71,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 72,
+      "turn": 1,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 76,
+      "turn": 4,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 77,
+      "turn": 5,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 80,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 82,
+      "turn": 1,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 97,
+      "turn": 5,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 100,
+      "turn": 3,
+      "screening_flags": [
+        "intent"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    },
+    {
+      "conversation": 100,
+      "turn": 5,
+      "screening_flags": [
+        "internal_details"
+      ],
+      "review": "Confirmed routing or wording issue; no actual passenger data access or record save occurred in this test."
+    }
+  ],
+  "additional_findings": [
+    "Questions during name/review collection could become field values or restart intake.",
+    "Email save consent incorrectly described as email transmission in some replies.",
+    "Unsupported blanket claims about changing or reopening a delivered record.",
+    "Several greetings/request-free messages unnecessarily introduced tracking.",
+    "Multiple correction fields required preserving both and reviewing only requested fields.",
+    "Natural cancellation and contact preference changes required frontend handling.",
+    "Legacy saved-update acknowledgements used unsolicited jokes regardless of distress."
+  ],
+  "fixes": [
+    "Scoped positive contact intent; negated calls and process questions stay conversational.",
+    "Staff correspondence separate from saved request; no sent email/call claims.",
+    "Missing delivery number alternatives without restarting verification.",
+    "Concise action acknowledgement; no internal workflow labels.",
+    "Contact clarification preserves step, values and request reference.",
+    "Email-first intake, natural withdrawal, bilingual preference switching.",
+    "Requested correction fields collected once and explicitly reviewed; backend verifies before saving pending request.",
+    "Reverification resumes original action and requested correction fields.",
+    "No canned joke on correction save."
+  ],
+  "local_integration_suites_passed": 5,
+  "deployment": {
+    "kate_intent": 21,
+    "kate_customer_update": 7,
+    "frontend_version": "20261013-complex2"
+  },
+  "remaining_launch_checks": [
+    "Real authorized passenger delivery verification and staff handling of saved requests require final operational acceptance before October 15."
+  ],
+  "rechecks": {
+    "version20_contextual_cases": 100,
+    "version21_contextual_cases_requested": 47,
+    "version21_five_turn_conversations_requested": 6,
+    "results": "See accompanying raw synthetic results; final counts recorded after completion."
+  }
+}
