@@ -82,12 +82,12 @@ handleFlowInput=async function(text){
   const result=await response.json();
   if(current?.lastData&&result.verification==='required'){
    window.kateVerifiedDelivery=null;resetFlow();
-   if(['status','photos','attempt','update'].includes(result.action)){addMessage('I couldn’t verify this delivery again. Let’s check the order number and passenger last name.');startDeliveryLookup('status');return true}
+   if(['status','photos','attempt','update'].includes(result.action)){startDeliveryLookup('status');return true}
   }
   if(result.verification==='verified'&&result.delivery&&current){current.lastData=result.delivery;rememberVerifiedDelivery(current.orderNumber,current.lastName,result.delivery)}
   const verified=result.verification==='verified'&&kateFlow?.lastData;
   if(['status','photos','attempt','update'].includes(result.action)&&!verified){
-   if(result.reply)addMessage(result.reply);
+   // The lookup flow supplies the next question; avoid a second overlapping introduction.
    if(result.verification==='unavailable')addMessage('I’m having trouble checking D.A.R.T. right now. Please try again shortly or contact support@kedelivery.com.');
    else startDeliveryLookup('status');
    return true;
