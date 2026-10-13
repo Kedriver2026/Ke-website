@@ -104,5 +104,15 @@
     "unnecessary follow-up permission questions",
     "workflow narration"
   ],
-  "regression_suite": "review-regression.json"
+  "regression_suite": "review-regression.json",
+  "followup_checks_completed": 70,
+  "followup_distinct_cases": 60,
+  "latest_screening_flags": {},
+  "backend_final_version": 19,
+  "frontend_version": "20261013-review1",
+  "additional_workflow_checks": [
+    "unverified photo request resumes after order/surname verification",
+    "correction emits one prompt instead of duplicate AI and workflow introductions",
+    "single No is not treated as a closing acknowledgement"
+  ]
 }
