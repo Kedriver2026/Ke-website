@@ -24,7 +24,10 @@ let kateContactFlow=null;
 function startKateContact(text=''){
  const method=/call|callback|phone/i.test(text)?'phone':'email';
  const delivery=kateFlow?.lastData?kateFlow:null;
- kateContactFlow={step:'name',method,fullName:'',email:'',phone:'',reason:'',orderNumber:delivery?.orderNumber||'',lastName:delivery?.lastName||'',reference:crypto.randomUUID()};
+ const suppliedEmail=text.match(/[^\s@,;]+@[^\s@,;]+\.[^\s@,;.]+/i)?.[0]||'';
+ const suppliedName=text.match(/(?:my name is|name:)\s*([\p{L} '-]{2,80})(?:[,.;]|$)/iu)?.[1]?.trim()||'';
+ kateContactFlow={step:'name',method,fullName:suppliedName,email:suppliedEmail,phone:'',reason:'',orderNumber:delivery?.orderNumber||'',lastName:delivery?.lastName||'',reference:crypto.randomUUID()};
+ if(suppliedName){if(method==='email'&&suppliedEmail){afterContactValue();return}kateContactFlow.step='contact';addMessage(method==='email'?'What email address should K&E reply to?':'What phone number should K&E call, including the country code?');return}
  addMessage(method==='email'?'I can save an email follow-up request for the K&E team. Email keeps a record of the conversation. What’s your full name?':'I can save a callback request for the K&E team. What’s your full name?');input.placeholder='Enter your full name…';
 }
 function reviewKateContact(){
@@ -39,7 +42,7 @@ async function handleKateContact(text){
  if(/why.*email|why.*chat|what.*save|what.*happen/.test(q)){addMessage('Email lets you and K&E keep a record of your correspondence. I’ll save your contact details, concern and this chat only after you confirm. The K&E team can then follow up; I haven’t sent an email or placed a call.');return true}
  if(/email instead|prefer.*email/.test(q)){f.method='email';f.step='contact';addMessage('Of course. What email address should K&E use?');return true}
  if(/call instead|prefer.*call|callback instead/.test(q)){f.method='phone';f.step='contact';addMessage('Of course. What phone number should K&E use, including the country code?');return true}
- if(f.step==='name'){if(t.length<2||t.length>100){addMessage('Please enter your full name so K&E knows who to contact.');return true}f.fullName=t;f.step='contact';addMessage(f.method==='email'?'What email address should K&E reply to?':'What phone number should K&E call, including the country code?');input.placeholder=f.method==='email'?'Enter your email address…':'Enter your phone number…';return true}
+ if(f.step==='name'){if(t.length<2||t.length>100){addMessage('Please enter your full name so K&E knows who to contact.');return true}f.fullName=t;if(f.method==='email'&&f.email){afterContactValue();return true}f.step='contact';addMessage(f.method==='email'?'What email address should K&E reply to?':'What phone number should K&E call, including the country code?');input.placeholder=f.method==='email'?'Enter your email address…':'Enter your phone number…';return true}
  if(f.step==='contact'){
   if(f.method==='email'){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)||t.length>254){addMessage('That email address doesn’t look complete. Please check it and send it again.');return true}f.email=t.toLowerCase()}
   else{if(!/^[+()\d\s.-]{7,40}$/.test(t)){addMessage('Please send the best callback number, including the country code.');return true}f.phone=t}
