@@ -60,6 +60,21 @@ jobs:
               print("delivery_domain_bindings",[{k:d.get(k) for k in ("hostname","service","environment")} for d in domains if "kedelivery.com" in d.get("hostname","")])
           except urllib.error.HTTPError as e:
               print("delivery_domain_bindings HTTP",e.code)
+
+          def read_cf(path):
+              req=urllib.request.Request("https://api.cloudflare.com/client/v4/"+path,headers={"Authorization":f"Bearer {token}"})
+              try:
+                  with urllib.request.urlopen(req) as r:
+                      return json.load(r).get("result",[])
+              except urllib.error.HTTPError as e:
+                  print("delivery_routing_read HTTP",e.code,path.split("/")[-1])
+                  return []
+          projects=read_cf(f"accounts/{account}/pages/projects")
+          print("delivery_pages",[{"name":p.get("name"),"domains":p.get("domains"),"production_branch":p.get("production_branch"),"source":p.get("source",{}).get("config",{}).get("production_branch")} for p in projects if any("kedelivery.com" in h for h in p.get("domains",[])) or p.get("name")=="ke-website"])
+          zones=read_cf("zones?name=kedelivery.com")
+          for z in zones:
+              routes=read_cf(f"zones/{z['id']}/workers/routes")
+              print("delivery_worker_routes",[{k:r.get(k) for k in ("pattern","script")} for r in routes])
           PY
 
       - name: Prepare website assets
