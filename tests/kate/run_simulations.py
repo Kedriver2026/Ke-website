@@ -1,9 +1,9 @@
 import json,time,subprocess,concurrent.futures,argparse,datetime
 from pathlib import Path
 p=argparse.ArgumentParser();p.add_argument('--only',default='');p.add_argument('--scenarios',default='tests/kate/scenarios.json');p.add_argument('--output',default='/workspace/scratch/a28ab6247ae1/kate-100-results.json');args=p.parse_args()
-cases=json.loads(Path(args.scenarios).read_text());ids={int(x) for x in args.only.split(',') if x};cases=[c for c in cases if not ids or c['id'] in ids]
+suite=json.loads(Path(args.scenarios).read_text());cases=suite;ids={int(x) for x in args.only.split(',') if x};cases=[c for c in cases if not ids or c['id'] in ids]
 endpoint='https://yvppsjgyedqcvfbhrhrm.supabase.co/functions/v1/kate-intent'
-out=Path(args.output);previous=json.loads(out.read_text()) if out.exists() else {};results=previous.get('results',[]);done_ids={r['id'] for r in results};cases_total=len(cases);cases=[c for c in cases if c['id'] not in done_ids];started=time.monotonic();started_at=datetime.datetime.now(datetime.timezone.utc).isoformat()
+out=Path(args.output);previous=json.loads(out.read_text()) if out.exists() else {};results=previous.get('results',[]);done_ids={r['id'] for r in results};cases_total=len(suite);cases=[c for c in cases if c['id'] not in done_ids];started=time.monotonic();started_at=datetime.datetime.now(datetime.timezone.utc).isoformat()
 def run(case):
  payload={'mode':'conversation','text':case['text'],'history':case['history']}
  for retry in range(3):
@@ -38,7 +38,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
    f=pool.submit(run,cases[index]);pending[f]=cases[index]['id'];index+=1;next_launch=now+4.2
   completed=[f for f in pending if f.done()]
   for f in completed:
-   result=f.result();results.append(result);del pending[f];results.sort(key=lambda r:r['id']);out.write_text(json.dumps({'started_at':started_at,'cases_total':cases_total,'completed':len(results),'results':results},ensure_ascii=False,indent=2)+'\n')
-   print(f"{len(results)}/{len(cases)} case {result['id']}: {result['response'].get('action')} flags={result['flags']}",flush=True)
+   result=f.result();results.append(result);del pending[f];results.sort(key=lambda r:r['id']);checkpoint=out.with_suffix(out.suffix+'.tmp');checkpoint.write_text(json.dumps({'started_at':started_at,'cases_total':cases_total,'completed':len(results),'results':results},ensure_ascii=False,indent=2)+'\n');checkpoint.replace(out)
+   print(f"{len(results)}/{cases_total} case {result['id']}: {result['response'].get('action')} flags={result['flags']}",flush=True)
   time.sleep(.2)
 print('COMPLETE',len(results),'cases in',round(time.monotonic()-started),'seconds;',sum(bool(r['flags']) for r in results),'flagged for review.',flush=True)
