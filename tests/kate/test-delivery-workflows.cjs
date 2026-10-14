@@ -5,6 +5,15 @@ const context=vm.createContext({console,AbortSignal,setTimeout:f=>f(),window:{},
 for(const file of ['script.js','kate-intent-runtime.js','kate-status-runtime.js','kate-pod-runtime.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
 const run=code=>vm.runInContext(code,context);
 (async()=>{
+ for(const status of ['Not delivered','Not yet delivered','Never delivered','Undelivered','Attempted, not delivered'])assert.notEqual(run(`kateStatusKind(${JSON.stringify({status})})`),'delivered');
+ assert.equal(run('kateStatusKind({status:"OD Delivered INV"})'),'delivered');
+ reply={status:'Attempted'};
+ run("kateFlow={step:'attempt_evidence_followup',orderNumber:'TEST12345',lastName:'Test',lastData:{status:'Attempted'}}");
+ await run('handleFlowInput("Was it eventually delivered after the attempt?")');
+ assert.ok(messages.at(-1).includes('don’t see a confirmed'));
+ assert.ok(!messages.some(m=>m?.includes('later completed')));
+ reply={status:'Assigned'};
+
  run("kateFlow={mode:'status',step:'review',orderNumber:'TEST-BDO',lastName:'Test',lastData:{status:'Assigned'},confirmedAddress:'Test address'};rememberVerifiedDelivery(kateFlow.orderNumber,kateFlow.lastName,kateFlow.lastData)");
  await run('saveCustomerUpdate()');assert.equal(run('kateFlow'),null);
  assert.equal(await run("handleFlowInput(\"No,thats it,thank you!\")"),false);assert.ok(run('answerText("No,thats it,thank you!")'));
@@ -22,3 +31,4 @@ const run=code=>vm.runInContext(code,context);
  run('resetFlow()');assert.equal(await run('handleFlowInput("Thanks")'),false);
  console.log('PASS: save → thank-you → timing; live schedule; delivered; attempted; offline; new-order isolation; failed re-verification; unverified chat.');
 })().catch(e=>{console.error(e);process.exitCode=1});
+
