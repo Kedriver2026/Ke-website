@@ -9,7 +9,7 @@ assert.equal(vm.runInContext(`row('<tr><td>TEST1234</td><td>OTHER</td></tr><tr><
 c.mockSearch=async order=>{seen.push(order);return{initial:'',result:'',row:order===available?{lastName:wrongName?'OTHER':'TEST'}:null}};
 c.mockImages=()=>photo?'<table><tr><td>AT Attempted Delivery INV</td><td><img src="https://test.s3.us-east-2.amazonaws.com/attempt.png?sig=test"></td></tr><tr><td>ON Delivery on the way</td><td><img src="https://test.s3.amazonaws.com/earlier.jpg?sig=test"></td></tr><tr><td>OD Delivered INV</td><td><img src="https://test.s3.amazonaws.com/proof.jpg?sig=test"></td></tr></table>':'';
 c.testSize=()=>imageSize;
-vm.runInContext("dartLogin=async()=> 'session';searchOrder=mockSearch;openDetail=async()=> '<p>AT Attempted Delivery INV - No gate code - Updated by Staff Original BDO information: private</p>';cancelDetail=async()=> '';text=async()=>mockImages();bytes=async()=>({type:'image/jpeg',buf:new Uint8Array(testSize())})",c);
+vm.runInContext("dartLogin=async()=> 'session';searchOrder=mockSearch;openDetail=async()=> '<p>AT Attempted Delivery INV - No gate code - 123 Staff - Updated by Staff Original BDO information: private</p>';cancelDetail=async()=> '';text=async()=>mockImages();bytes=async()=>({type:'image/jpeg',buf:new Uint8Array(testSize())})",c);
 const request=(order,kind='delivered')=>handler(new Request('https://test',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({orderNumber:order,lastName:'Test',kind})}));
 (async()=>{
  let r=await request('TEST123'),d=await r.json();assert.equal(r.status,200);assert.equal(d.lookupOrder,'TEST123');assert.equal(d.photoAvailable,true);assert.equal(d.photos.length,1);assert.deepEqual(seen,['TEST123D2','TEST123-D2','TEST123']);
