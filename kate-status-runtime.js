@@ -1,4 +1,4 @@
-function kateStatusKind(data){const s=String(data?.status||'').trim().toLowerCase();if(!s)return'ready';if(/delivered/.test(s))return'delivered';if(/attempt/.test(s))return'attempted';if(/out\s*for\s*delivery|ofd/.test(s))return'out_for_delivery';if(/pick(ed)?\s*up/.test(s))return'picked_up';if(/assign/.test(s)&&!/unassign/.test(s))return'assigned';if(/unassign|unassigned/.test(s))return'ready';return'other'}
+function kateStatusKind(data){const s=String(data?.status||'').trim().toLowerCase();if(!s)return'ready';if(/attempt/.test(s))return'attempted';if(/\bdelivered\b/.test(s)&&!/\b(?:not|never)\b.*\bdelivered\b|\bundelivered\b/.test(s))return'delivered';if(/out\s*for\s*delivery|ofd/.test(s))return'out_for_delivery';if(/pick(ed)?\s*up/.test(s))return'picked_up';if(/assign/.test(s)&&!/unassign/.test(s))return'assigned';if(/unassign|unassigned/.test(s))return'ready';return'other'}
 function rememberVerifiedDelivery(orderNumber,lastName,data){window.kateVerifiedDelivery={orderNumber,lastName,data,verifiedAt:Date.now()}}
 function restoreVerifiedDelivery(){
  const v=window.kateVerifiedDelivery;
@@ -69,3 +69,4 @@ if(kateFlow?.step==='delivered_followup'){
  addMessage('Ask me anything about this delivery—I can check the completed delivery time, proof-of-delivery photos, or whether there was an earlier delivery attempt.');return true}
 if(kateFlow?.step==='delivered_problem'){addMessage('I’m keeping this as a delivered-but-not-received problem. Tell me what you found, or ask me to review the proof-of-delivery photo or delivery location.');return true}
 return deliveredBaseHandle(text)};
+
