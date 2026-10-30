@@ -2,6 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer">
+  <script>
+  (() => {
+    const url = new URL(location.href);
+    const hash = new URLSearchParams(url.hash.replace(/^#/, ''));
+    const recovery = hash.get('type') === 'recovery' || url.searchParams.get('type') === 'recovery';
+    // Failed/used links may omit type and all session credentials.
+    const failed = ['error', 'error_code', 'error_description'].some(key =>
+      hash.has(key) || url.searchParams.has(key));
+    if (!recovery && !failed) return;
+    // Only the existing password page consumes the callback. Never accept a
+    // destination from the URL, exchange a session here, or persist credentials.
+    window.keRecoveryRedirecting = true;
+    const destination = '/set-password' + url.search + url.hash;
+    history.replaceState({}, '', url.pathname);
+    location.replace(destination);
+  })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="K&E Connect is the driver connection platform for K&E Delivery — built to support professional independent drivers from route acceptance through delivery completion.">
   <title>K&E Connect | Join the K&E Family</title>
@@ -59,5 +77,5 @@
 </main>
 <footer><strong>K&E Connect</strong><span>Powered by K&E Delivery</span><span>Making Connections • Building a Stronger Tomorrow</span><span>© 2026 K&E. All rights reserved.</span></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>(async()=>{const u=new URL(location.href),shouldVerify=u.searchParams.get('driver_verify')==='1'||u.searchParams.has('code')||location.hash.includes('access_token=');if(!shouldVerify)return;const overlay=document.getElementById('verifyOverlay'),msg=document.getElementById('verifyMessage');overlay.classList.add('show');try{const client=supabase.createClient('https://yvppsjgyedqcvfbhrhrm.supabase.co','sb_publishable_2QMw5NredQMVvWOHhV1gWg_YYuOryO7');const code=u.searchParams.get('code');if(code){const{error}=await client.auth.exchangeCodeForSession(code);if(error)throw error}else{const h=new URLSearchParams(location.hash.replace(/^#/,'')),access=h.get('access_token'),refresh=h.get('refresh_token');if(access&&refresh){const{error}=await client.auth.setSession({access_token:access,refresh_token:refresh});if(error)throw error}}const{data}=await client.auth.getSession();if(!data.session)throw new Error('We could not finish email verification. Please request a new application link.');history.replaceState({},document.title,'/');location.href='/driver-onboarding.html';}catch(e){msg.textContent=e.message||'We could not finish email verification. Please request a new application link.';}})();</script>
+<script>(async()=>{if(window.keRecoveryRedirecting)return;const u=new URL(location.href),shouldVerify=u.searchParams.get('driver_verify')==='1'||u.searchParams.has('code')||location.hash.includes('access_token=');if(!shouldVerify)return;const overlay=document.getElementById('verifyOverlay'),msg=document.getElementById('verifyMessage');overlay.classList.add('show');try{const client=supabase.createClient('https://yvppsjgyedqcvfbhrhrm.supabase.co','sb_publishable_2QMw5NredQMVvWOHhV1gWg_YYuOryO7');const code=u.searchParams.get('code');if(code){const{error}=await client.auth.exchangeCodeForSession(code);if(error)throw error}else{const h=new URLSearchParams(location.hash.replace(/^#/,'')),access=h.get('access_token'),refresh=h.get('refresh_token');if(access&&refresh){const{error}=await client.auth.setSession({access_token:access,refresh_token:refresh});if(error)throw error}}const{data}=await client.auth.getSession();if(!data.session)throw new Error('We could not finish email verification. Please request a new application link.');history.replaceState({},document.title,'/');location.href='/driver-onboarding.html';}catch(e){msg.textContent=e.message||'We could not finish email verification. Please request a new application link.';}})();</script>
 </body></html>
