@@ -24,23 +24,10 @@
     if (!recovery && failed &&
         url.searchParams.getAll('driver_verify').length === 1 &&
         url.searchParams.get('driver_verify') === '1') {
-      // Signup and Continue callbacks can lose OTP type on expiry; neither
-      // grants approval or should forward to the password-recovery page.
+      // A failed application sign-in is not a password-recovery request.
       window.keRecoveryRedirecting = true;
       history.replaceState({}, '', url.pathname);
-      document.addEventListener('DOMContentLoaded', () => {
-        const overlay = document.getElementById('verifyOverlay');
-        const message = document.getElementById('verifyMessage');
-        if (!overlay || !message) return;
-        message.textContent = 'This application link is no longer valid. Request a new sign-in link using the email you applied with.';
-        const link = document.createElement('a');
-        link.href = '/driver-application.html#continueApplication';
-        link.textContent = 'Continue application';
-        link.className = 'verify-continue-application';
-        message.after(link);
-        overlay.classList.add('show', 'application-link-expired');
-        link.focus();
-      }, {once:true});
+      location.replace('/driver-application.html#continueApplication');
       return;
     }
     if (!recovery && !failed) return;
@@ -83,12 +70,6 @@
     #verifyOverlay.show{display:flex}
     #verifyOverlay .box{max-width:560px;background:#0b2139;border:1px solid #173652;border-radius:24px;padding:28px}
     #verifyOverlay img{width:210px}
-    #verifyOverlay.application-link-expired{box-sizing:border-box;overflow:auto;align-items:safe center;padding:clamp(12px,4vw,24px)}
-    #verifyOverlay.application-link-expired .box{box-sizing:border-box;width:min(100%,560px);min-width:0;padding:clamp(14px,5vw,28px)}
-    #verifyOverlay.application-link-expired img{max-width:100%;height:auto}
-    #verifyOverlay.application-link-expired h1{font-size:clamp(1.5rem,6vw,2rem);overflow-wrap:anywhere}
-    .verify-continue-application{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;padding:8px 12px;color:#a6d6ff;text-decoration:underline;font-weight:800;overflow-wrap:anywhere}
-    .verify-continue-application:focus-visible{outline:2px solid #a6d6ff;outline-offset:2px}
     @media(max-width:900px){
       .connect-home .header-logo{width:132px;height:68px}
       .connect-home .hero-logo{width:min(360px,86vw)}
