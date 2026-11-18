@@ -21,6 +21,15 @@
         return;
       }
     }
+    if (!recovery && failed &&
+        url.searchParams.getAll('driver_verify').length === 1 &&
+        url.searchParams.get('driver_verify') === '1') {
+      // A failed application sign-in is not a password-recovery request.
+      window.keRecoveryRedirecting = true;
+      history.replaceState({}, '', url.pathname);
+      location.replace('/driver-application.html#continueApplication');
+      return;
+    }
     if (!recovery && !failed) return;
     // Only the existing password page consumes the callback. Never accept a
     // destination from the URL, exchange a session here, or persist credentials.
