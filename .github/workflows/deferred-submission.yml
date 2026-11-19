@@ -1,0 +1,16 @@
+name: Deferred website submission validation
+on:
+  pull_request:
+  push:
+    branches: ['codex/deferred-website-submission-20261119']
+permissions:
+  contents: read
+jobs:
+  isolated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/onboarding/test-deferred-submission.cjs
