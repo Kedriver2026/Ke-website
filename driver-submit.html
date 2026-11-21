@@ -1,4 +1,43 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>K&E | Submit Application</title><link rel="stylesheet" href="styles.css"><main><h1>Submit your application for review</h1><p>Confirm that your address, vehicle details, license, insurance, registration, vehicle photo, and background authorization are complete.</p><p>After K&E approves your application, sign in to K&E Connect to complete your contract, W-9, payment information, and driver photo. Your saved vehicle photo carries forward. Complete onboarding before claiming routes.</p><button id="submit">Submit Application</button><p id="status" role="status"></p><a href="driver-onboarding.html">Back to application</a></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4"></script><script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K&E | Submit Application</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{background:#041426;color:#fff}
+.wrap{width:min(720px,calc(100% - 32px));margin:auto;padding:28px 0 70px}
+.brand{text-align:center}
+.brand img{width:min(210px,100%);margin:0 auto}
+.card{background:#0b2139;border:1px solid #173652;border-radius:24px;padding:24px;margin-top:20px}
+.card h1{margin:0 0 14px;font-size:clamp(1.75rem,5vw,2.5rem)}
+.muted{color:#9fb0c5;line-height:1.55;margin:0 0 20px}
+#submit{display:flex;width:100%;justify-content:center;min-height:48px;border:0;cursor:pointer;font-family:inherit;text-align:center}
+#submit:disabled{opacity:.65;cursor:wait}
+#status{margin:0}
+#status:not(:empty){margin-top:14px;padding:14px;border:1px solid #8a3447;border-radius:14px;background:#3a1720}
+.back,.back:visited{display:block;text-align:center;color:#5bb2ff;text-decoration:none;font-weight:900;margin-top:18px}
+.back:hover{text-decoration:underline}
+#submit:focus-visible,.back:focus-visible{outline:2px solid #a5d8ff;outline-offset:3px}
+@media(max-width:600px){.wrap{width:calc(100% - 24px);padding-top:18px}.card{padding:20px}.brand img{width:min(185px,100%)}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="brand"><img src="ke-connect-logo-new.png" alt="K&E Connect"><p>Driver Onboarding</p></div>
+<section class="card">
+<p class="eyebrow">FINAL STEP</p>
+<h1>Submit your application for review</h1>
+<p class="muted">After K&E approves your application, sign in to K&E Connect to complete your contract, W-9, payment information, and driver photo. Your saved vehicle photo carries forward. Complete onboarding before claiming routes.</p>
+<button class="button primary" id="submit" type="button">Submit Application</button>
+<p id="status" role="status"></p>
+<a class="back" href="driver-onboarding.html">← Back to application</a>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4"></script><script>
 const client=supabase.createClient('https://yvppsjgyedqcvfbhrhrm.supabase.co','sb_publishable_2QMw5NredQMVvWOHhV1gWg_YYuOryO7');
 document.getElementById('submit').onclick=async()=>{const b=document.getElementById('submit'),s=document.getElementById('status');b.disabled=true;try{const {error}=await client.functions.invoke('submit-driver-application',{body:{defer_paperwork:true}});if(error)throw error;location.href='/driver-application-submitted.html';}catch(e){s.textContent='Could not confirm submission. Check your required sections and try again.';b.disabled=false;}};
-</script></html>
+</script>
+</body>
+</html>
